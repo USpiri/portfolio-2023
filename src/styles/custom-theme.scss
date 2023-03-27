@@ -1,0 +1,84 @@
+@use "/node_modules/@angular/material/" as mat;
+@use "sass:map";
+@use "./variables";
+
+// Utilities
+@use "./utils/set-background.scss";
+@use "./utils/teme-class-generator.scss";
+
+// Palette colors
+@use "./palettes/background.scss";
+@use "./palettes/primary.scss";
+@use "./palettes/accent.scss";
+@use "./palettes/warn.scss";
+
+// Fonts
+@use "./fonts/font.scss";
+
+// Theme object.
+$angular-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: primary.$theme-primary,
+      accent: accent.$theme-accent,
+      warn: warn.$theme-warn,
+    ),
+    typography: font.$fontConfig,
+  )
+);
+$angular-theme: set-background.modify-background($angular-theme, background.$mat-dark-theme-background);
+
+// Theme Init
+@include mat.all-component-themes($angular-theme);
+
+// Classes generator
+@mixin generate-material-classes {
+  @include teme-class-generator.generateColors(primary, primary.$mat-primary);
+  @include teme-class-generator.generateColors(accent, accent.$mat-accent);
+  @include teme-class-generator.generateColors(warning, warn.$mat-warn);
+  @include teme-class-generator.generateColors("", background.$mat-dark);
+}
+@include generate-material-classes();
+
+// Specific component overrides, pieces that are not in line with the general theming
+// Handle buttons appropriately, with respect to line-height
+.mat-raised-button,
+.mat-stroked-button,
+.mat-flat-button {
+  padding: 0 1.15em;
+  margin: 0 0.65em;
+  min-width: 3em;
+  line-height: 36.4px;
+}
+
+.mat-standard-chip {
+  padding: 0.5em 0.85em;
+  min-height: 2.5em;
+}
+
+.material-icons {
+  font-size: 24px;
+  font-family: "Material Icons", "Material Icons";
+  .mat-badge-content {
+    font-family: "Roboto";
+  }
+}
+
+// Basic customizations
+// html,
+// body {
+//   height: 100%;
+// }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+

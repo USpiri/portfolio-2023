@@ -1,0 +1,31 @@
+@use '../variables';
+
+// Background palette for dark themes.
+$mat-dark-theme-background: (
+  background:               variables.$dark-background,
+  status-bar:               variables.$dark-bg-lighter-20,
+  app-bar:                  variables.$dark-bg-lighter-5,
+  hover:                    variables.$light-bg-alpha-4,
+  card:                     variables.$dark-bg-lighter-5,
+  dialog:                   variables.$dark-bg-lighter-5,
+  tooltip:                  variables.$dark-bg-lighter-20,
+  disabled-button:          variables.$light-bg-alpha-12,
+  raised-button:            variables.$dark-bg-lighter-5,
+  focused-button:           variables.$light-focused,
+  selected-button:          variables.$dark-bg-lighter-20,
+  selected-disabled-button: variables.$dark-bg-lighter-30,
+  disabled-button-toggle:   variables.$dark-bg-lighter-10,
+  unselected-chip:          variables.$dark-bg-lighter-20,
+  disabled-list-option:     variables.$dark-bg-lighter-10,
+);
+
+// Dark theme classes
+$mat-dark: (
+  background:               variables.$dark-background,
+  bg-lighter-5:             variables.$dark-bg-lighter-5,
+  bg-lighter-10:            variables.$dark-bg-lighter-10,
+  bg-lighter-20:            variables.$dark-bg-lighter-20,
+  bg-lighter-30:            variables.$dark-bg-lighter-30,
+  dark-bg-alpha-4:          variables.$light-bg-alpha-4,
+  dark-bg-alpha-12:         variables.$light-bg-alpha-12,
+);

@@ -1,0 +1,21 @@
+.loading-spin {
+  animation: rotation 1.45s infinite linear !important;
+  -webkit-animation: rotation 1.45s infinite linear !important;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
