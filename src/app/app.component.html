@@ -10,13 +10,18 @@
       <span class="nav-item">Blog</span>
       <span class="nav-item">Gallery</span>
       <span class="nav-item">Contact</span>
-      <span class="nav-item">
-        <mat-icon fontSet="material-icons-outlined" class="mt-1">account_circle</mat-icon>
-      </span>
+      <div
+        class="nav-item icon"
+        (mouseout)="icon = 'lock'"
+        (mouseover)="icon = 'lock_open'"
+      >
+        <mat-icon fontSet="material-icons-outlined" class="mt-1">{{
+          icon
+        }}</mat-icon>
+      </div>
     </div>
   </div>
 </mat-toolbar>
 <div class="main-container">
-  <router-outlet class="sub-container">
-  </router-outlet>
+  <router-outlet class="sub-container"></router-outlet>
 </div>
