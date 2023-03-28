@@ -1,18 +1,22 @@
 <mat-toolbar>
   <div class="d-flex justify-content-between flex-row w-100">
-    <span>Uriel Spiridione</span>
+    <span class="title">Uriel Spiridione</span>
     <div class="d-flex gap-3">
-      <span>About</span>
-      <span>Projects</span>
-      <span>Experience</span>
-      <span>Skills</span>
-      <span>Education</span>
-      <span>Blog</span>
-      <span>Gallery</span>
-      <span>Contact</span>
+      <span class="nav-item">About</span>
+      <span class="nav-item">Projects</span>
+      <span class="nav-item">Experience</span>
+      <span class="nav-item">Skills</span>
+      <span class="nav-item">Education</span>
+      <span class="nav-item">Blog</span>
+      <span class="nav-item">Gallery</span>
+      <span class="nav-item">Contact</span>
+      <span class="nav-item">
+        <mat-icon fontSet="material-icons-outlined" class="mt-1">account_circle</mat-icon>
+      </span>
     </div>
   </div>
 </mat-toolbar>
-<div>
-  <p>Hello World!</p>
+<div class="main-container">
+  <router-outlet class="sub-container">
+  </router-outlet>
 </div>
