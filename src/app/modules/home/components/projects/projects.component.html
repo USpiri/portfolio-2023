@@ -1,1 +1,36 @@
-<p>projects works!</p>
+<div class="section-container p-5">
+  <div class="d-flex">
+    <div class="w-50 h-100 sticky-top">
+      <div class="p-5 ms-5">
+        <h1 class="mb-2 mt-5">Projects</h1>
+        <p class="section-description">
+          These are some of my latest and greatest programming projects, each one
+          is a unique reflection of my creativity, expertise, and passion for
+          coding. From web development to command-line applications in Rust.
+        </p>
+      </div>
+    </div>
+    <div class="w-50 row row-cols-2 gap-4 project-grid">
+      <mat-card
+        class="col project-card p-5 d-flex justify-content-between"
+        *ngFor="let project of projects"
+      >
+        <div>
+          <span class="project-theme text-uppercase">Rust</span>
+          <h3>Devly CLI</h3>
+          <p class="project-description">
+            Devly is a Rust-based command-line interface (CLI) application
+            designed to assist developers in their programming process.
+          </p>
+        </div>
+        <div class="d-flex flex-row">
+          <button mat-button>
+            Github<mat-icon fontSet="fa-brands" fontIcon="fa-github"></mat-icon>
+          </button>
+          <button mat-button>Web<mat-icon>language</mat-icon></button>
+        </div>
+      </mat-card>
+    </div>
+    <div class="d-flex"></div>
+  </div>
+</div>
