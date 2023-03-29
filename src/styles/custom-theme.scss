@@ -15,6 +15,9 @@
 // Fonts
 @use "./fonts/font.scss";
 
+// Font Awesome Icnos
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
 // Theme object.
 $angular-theme: mat.define-dark-theme(
   (
@@ -82,3 +85,4 @@ body {
   user-select: none; /* Standard */
 }
 
+@import '../styles/components/scroll-bar.scss';
