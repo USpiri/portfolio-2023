@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./experience.component.scss']
 })
 export class ExperienceComponent {
-
+  experiences:any[] = [1,2,3,4]
 }
