@@ -12,3 +12,9 @@ p {
   min-height: calc(100vh - 64px);
   height: calc(100vh - 64px);
 }
+.section-description {
+  max-width: 600px;
+  width: 600px;
+  padding: 16px;
+  color: var(--bg-lighter-30);
+}
