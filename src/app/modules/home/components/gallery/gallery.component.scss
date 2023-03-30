@@ -1,0 +1,12 @@
+.gallery-container{
+  min-height: calc(75vh);
+}
+.gallery-content{
+  max-width: 900px;
+  padding: 16px;
+}
+.gallery-description {
+  max-width: 900;
+  padding: 16px;
+  color: var(--bg-lighter-30);
+}
