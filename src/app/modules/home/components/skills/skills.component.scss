@@ -3,6 +3,11 @@
 }
 .skill-card{
   cursor: pointer;
+  opacity: 1;
+  transition: all 0.5s;
+}
+.skills-container:has(.skill-card:hover) > .skill-card:not(:hover) {
+  opacity: .7;
 }
 .skill-title{
   color: var(--bg-lighter-30);

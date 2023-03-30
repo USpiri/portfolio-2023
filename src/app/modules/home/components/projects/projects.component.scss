@@ -2,19 +2,19 @@
   min-height: calc(100vh - 64px);
 }
 .project-card:nth-child(odd) {
-  // margin-top: 1.5rem;
   transform: translateY(-35px);
 }
 .project-card {
   width: 350px;
   height: 350px;
+  opacity: 1;
   transition: all 0.5s;
-  box-shadow: unset;
+}
+.projects-container:has(.project-card:hover) > .project-card:not(:hover) {
+  opacity: .5;
 }
 .project-card:hover {
   transform: scale(1.1);
-  // box-shadow: 0px 20px 55px 2000px rgba(0,0,0,0.5);
-  box-shadow: 0px 10px 50px 25px rgba(0, 0, 0, 0.1);
   z-index: 5;
 }
 .project-theme {
@@ -24,6 +24,5 @@
   color: var(--bg-lighter-30);
 }
 .project-description {
-  // font-size: 1rem;
   color: var(--bg-lighter-30);
 }
