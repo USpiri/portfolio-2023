@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent {
-
+  skills:any[] = ["Angukar","HTML","Angular Materials" ,"Bootstrap","SpringBoot","Rust","NODE","Git/Github","9","10"]
 }

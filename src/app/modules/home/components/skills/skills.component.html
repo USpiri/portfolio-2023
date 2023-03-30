@@ -1,1 +1,38 @@
-<p>skills works!</p>
+<div class="p-5">
+  <div class="d-flex">
+    <div class="w-50 h-100 sticky-top">
+      <div class="p-5 ms-5">
+        <h1 class="mb-2 mt-5">Skills</h1>
+        <p class="section-description">
+          Browse through my experience section to learn more about my career and
+          see how I can help your business thrive
+        </p>
+      </div>
+    </div>
+    <div class="w-50 h-100 mt-5 d-flex gap-3 flex-wrap skills-container">
+      <mat-card class="p-3 skill-card d-flex flex-row align-items-center" *ngFor="let skill of skills">
+        <mat-icon
+          fontSet="fa-brands"
+          fontIcon="fa-angular"
+          class="fs-4"
+        ></mat-icon>
+        <div class="skill-content d-flex flex-row align-items-center">
+          <h5 class="m-0 ms-2 skill-title">{{skill}}</h5>
+          <div
+            class="d-flex flex-row align-items-center skill-percentage position-absolute"
+          >
+            <mat-progress-spinner
+              class="ms-2"
+              color="Accent"
+              mode="determinate"
+              [value]="95"
+              [diameter]="25"
+            >
+            </mat-progress-spinner>
+            <h6 class="m-0 ms-2">95%</h6>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

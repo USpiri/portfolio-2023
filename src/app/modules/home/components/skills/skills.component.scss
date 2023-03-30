@@ -1,0 +1,24 @@
+.skills-container {
+  max-width: 710px;
+}
+.skill-card{
+  cursor: pointer;
+}
+.skill-title{
+  color: var(--bg-lighter-30);
+  transition: all .3s;
+  min-width: 80px;
+}
+.skill-percentage{
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s;
+}
+.skill-card:hover .skill-title{
+  visibility: hidden;
+  opacity: 0;
+}
+.skill-card:hover .skill-percentage{
+  opacity: 1;
+  visibility: visible;
+}
