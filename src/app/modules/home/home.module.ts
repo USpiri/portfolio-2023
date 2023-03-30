@@ -6,7 +6,6 @@ import { LandingComponent } from './components/landing/landing.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { SkillsComponent } from './components/skills/skills.component';
-import { EducationComponent } from './components/education/education.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -22,7 +21,6 @@ import { MaterialModule } from './shared/material/material.module';
     ProjectsComponent,
     ExperienceComponent,
     SkillsComponent,
-    EducationComponent,
     BlogComponent,
     GalleryComponent,
     ContactComponent,
