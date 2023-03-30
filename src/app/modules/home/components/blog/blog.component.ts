@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent {
-
+  blogs:any[] = [1,2,3,4];
 }
