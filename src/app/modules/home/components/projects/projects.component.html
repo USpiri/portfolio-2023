@@ -1,7 +1,7 @@
 <div class="projecs-container p-5">
-  <div class="d-flex">
-    <div class="w-50 h-100 sticky-top">
-      <div class="p-5 ms-5">
+  <div class="d-lg-flex">
+    <div class="w-100 w-lg-50 h-100 sticky-lg-top">
+      <div class="p-sm-5 ms-sm-5 project-header">
         <h1 class="mb-2 mt-5">Projects</h1>
         <p class="section-description">
           These are some of my latest programming projects, each one
@@ -16,9 +16,9 @@
         </div>
       </div>
     </div>
-    <div class="w-50 row row-cols-2 gap-4 projects-container">
+    <div class="w-100 w-lg-50 row row-cols-auto gap-3 row-cols-xl-2 gap-xl-4 projects-container">
       <mat-card
-        class="col project-card p-5 f-flex justify-content-between"
+        class="col project-card f-flex justify-content-between"
         *ngFor="let project of projects"
       >
         <div>
