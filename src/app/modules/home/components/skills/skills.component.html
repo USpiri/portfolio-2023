@@ -1,7 +1,7 @@
 <div class="p-5 skill-section d-flex align-items-center justify-content-center">
-  <div class="d-flex">
-    <div class="w-50 h-100 sticky-top">
-      <div class="p-5 ms-5">
+  <div class="d-lg-flex">
+    <div class="w-100 w-lg-50 h-100 sticky-lg-top">
+      <div class="p-sm-5 ms-lg-5">
         <h1 class="mb-2 mt-5">Skills</h1>
         <p class="section-description">
           Browse through my experience section to learn more about my career and
@@ -9,12 +9,12 @@
         </p>
       </div>
     </div>
-    <div class="w-50 h-100 mt-5 d-flex gap-3 flex-wrap skills-container justify-content-center">
-      <mat-card class="p-3 skill-card d-flex flex-row align-items-center" *ngFor="let skill of skills">
+    <div class="w-100 w-lg-50 h-100 mt-5 d-flex gap-3 flex-wrap skills-container justify-content-center">
+      <mat-card class="p-2 p-sm-3 skill-card d-flex flex-row align-items-center" *ngFor="let skill of skills">
         <mat-icon
           fontSet="fa-brands"
           fontIcon="fa-angular"
-          class="fs-4"
+          class="fs-4 d-flex justify-content-center align-items-center"
         ></mat-icon>
         <div class="skill-content d-flex flex-row align-items-center">
           <h5 class="m-0 ms-2 skill-title">{{skill}}</h5>
