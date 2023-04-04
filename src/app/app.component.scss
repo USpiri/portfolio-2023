@@ -13,14 +13,24 @@
 .nav-item:hover {
   opacity: 0.7;
 }
-.icon mat-icon{
+.icon mat-icon {
   font-weight: 200 !important;
 }
 .main-container {
   min-height: calc(100vh - 64px);
   height: calc(100vh - 64px);
-  box-shadow: inset 0px 60px 40px -20px rgba(21,21,21,0.8),inset 0px -60px 40px -20px rgba(21,21,21,0.8);
+  box-shadow: inset 0px 60px 40px -20px rgba(21, 21, 21, 0.8),
+    inset 0px -60px 40px -20px rgba(21, 21, 21, 0.8);
 }
 .sub-container {
   height: 100%;
+}
+.main-controller {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+.controller-button {
+  min-width: unset !important;
 }

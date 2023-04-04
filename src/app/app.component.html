@@ -23,5 +23,30 @@
 </mat-toolbar>
 <div class="main-container">
   <router-outlet class="sub-container"></router-outlet>
+  <div class="main-controller me-3 mb-3 d-flex flex-column">
+    <button
+      color="primary"
+      mat-raised-button
+      #contactButton
+      class="controller-button mb-2"
+      (click)="scrollToBottom()"
+      *ngIf="scrollPosition + windowHeight < documentHeight"
+      matTooltip="Contact Me"
+      matTooltipPosition="left"
+    >
+      <mat-icon class="m-0">mail</mat-icon>
+    </button>
+    <button
+      mat-raised-button
+      #topButton
+      class="controller-button"
+      (click)="scrollToTop()"
+      *ngIf="scrollPosition > 1000"
+      matTooltip="To top"
+      matTooltipPosition="left"
+    >
+      <mat-icon class="m-0">arrow_upward</mat-icon>
+    </button>
+  </div>
   <app-footer></app-footer>
 </div>
