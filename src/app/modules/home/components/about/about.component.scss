@@ -1,8 +1,25 @@
-.about-image{
-    width: 400px;
+.about-image {
+  width: 400px;
+  transition: all 0.3s;
 }
-.about-description{
-    max-width: 600px;
-    padding: 16px;
-    color: var(--bg-lighter-30);
+.about-description {
+  max-width: 600px;
+  padding: 16px;
+  color: var(--bg-lighter-30);
+}
+
+@media (max-width: 825px) {
+  .about-image {
+    width: 350px;
+  }
+}
+@media (max-width: 768px) {
+  .about-image {
+    width: 400px;
+  }
+}
+@media (max-width: 576px) {
+  .about-image {
+    width: 300px;
+  }
 }
