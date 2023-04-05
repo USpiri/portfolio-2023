@@ -19,8 +19,6 @@
 .main-container {
   min-height: calc(100vh - 64px);
   height: calc(100vh - 64px);
-  box-shadow: inset 0px 60px 40px -20px rgba(21, 21, 21, 0.8),
-    inset 0px -60px 40px -20px rgba(21, 21, 21, 0.8);
 }
 .sub-container {
   height: 100%;
@@ -29,8 +27,11 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  z-index: 10;
+  z-index: 15;
 }
 .controller-button {
   min-width: unset !important;
+}
+.navbar{
+  z-index: 15;
 }
