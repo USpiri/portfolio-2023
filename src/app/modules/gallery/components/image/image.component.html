@@ -1,6 +1,6 @@
 <div class="image-container" (click)="click()">
   <div class="image-wrapper">
-    <img class="image" src="{{ this.src }}" width="{{ this.width }}" />
+    <img class="image" src="{{ this.src }}" width="{{ this.width }}" onContextMenu="return false;"/>
     <div class="overlay">
       <mat-icon class="icon" fontSet="material-icons-outlined"
         >visibility</mat-icon
