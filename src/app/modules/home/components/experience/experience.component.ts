@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Experience } from 'src/app/models/experience.interface';
+import { EXPERIENCES } from 'src/assets/data/experience.mock';
 
 @Component({
   selector: 'app-experience',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./experience.component.scss']
 })
 export class ExperienceComponent {
-  experiences:any[] = [1,2,3,4]
+  experiences:Experience[] = EXPERIENCES;
 }

@@ -6,28 +6,23 @@
         <mat-card>
           <mat-card-content>
             <img
-              src="../../../../../assets/images/square.jpg"
+              [src]="user.image"
               class="about-image"
             />
           </mat-card-content>
         </mat-card>
       </div>
       <div class="about-description mt-5 mt-md-0">
-        <p class="mb-3">
-          My name is <strong>Uriel Spiridione</strong>, I live in Córdoba, Argentina. I am a professional web developer,
-          photographer, and a student of economics. Currently, I am working as a
-          front-end developer on an Angular team. I consider myself an organized
-          and creative individual who enjoys learning new things, experimenting,
-          and exploring different areas.
-        </p>
-        <p>
-          Outside of work, photography is my passion. I have been the lead
-          photographer for several important events and have taken photos with
-          models. However, I am currently interested in travel, casual and nature
-          photography more than modeling and social events.
-        </p>
+        <div  *ngFor="let description of user.description; let i = index">
+          <p class="mb-3" *ngIf="i === 0; else other">
+            My name is <strong>{{ user.name }}</strong>, I live in {{ user.location }}. {{ description }} 
+          </p>
+          <ng-template #other>
+            <p class="mb-3">{{ description }}</p>
+          </ng-template>
+        </div>
         <ul class="mt-4">
-          <li><Strong>Age: </Strong>23</li>
+          <li><Strong>Age: </Strong>{{ getAge(user.birthDate) }}</li>
           <li><Strong>Phone: </Strong>+54 351 213-6765</li>
           <li><Strong>Email: </Strong>urielspiridione135@gmail.com</li>
           <li><Strong>Córdoba, Argentina</Strong></li>

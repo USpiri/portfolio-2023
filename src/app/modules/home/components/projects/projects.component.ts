@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Project } from 'src/app/models/project.interface';
+import { PROJECTS } from 'src/assets/data/project.mock';
 
 @Component({
   selector: 'app-projects',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent {
-  projects:any[] = [1,2,3,4,5,6,7,8]
+  projects:Project[] = PROJECTS;
 }

@@ -7,11 +7,10 @@
       *ngFor="let blog of blogs"
     >
       <div>
-        <span class="blog-date">20/20/20</span>
-        <h3 class="mt-1 mb-3">Devly CLI</h3>
+        <span class="blog-date">{{ blog.date | date:'MMMM d, y' }} • {{ blog.author }}</span>
+        <h3 class="mt-2 mb-4">{{ blog.title }}</h3>
         <p class="blog-description">
-          Devly is a Rust-based command-line interface (CLI) application
-          designed to assist developers in their programming process.
+          {{ blog.description }}
         </p>
       </div>
       <div class="w-100 d-flex justify-content-end">

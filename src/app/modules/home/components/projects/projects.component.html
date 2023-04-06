@@ -16,11 +16,10 @@
         *ngFor="let project of projects"
       >
         <div>
-          <span class="project-theme text-uppercase">Rust</span>
-          <h3>Devly CLI</h3>
+          <span class="project-theme text-uppercase">{{ project.tags[0] }}</span>
+          <h3 class="text-break">{{ project.title }}</h3>
           <p class="project-description">
-            Devly is a Rust-based command-line interface (CLI) application
-            designed to assist developers in their programming process.
+            {{ project.description }}
           </p>
         </div>
         <div class="d-flex flex-row">

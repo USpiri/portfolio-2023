@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Blog } from 'src/app/models/blog.interface';
+import { BLOGS } from 'src/assets/data/blog.mock';
 
 @Component({
   selector: 'app-blog',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent {
-  blogs:any[] = [1,2,3,4];
+  blogs:Blog[] = BLOGS;
 }

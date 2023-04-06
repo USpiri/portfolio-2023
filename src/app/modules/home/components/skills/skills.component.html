@@ -17,7 +17,7 @@
           class="fs-4 d-flex justify-content-center align-items-center"
         ></mat-icon>
         <div class="skill-content d-flex flex-row align-items-center">
-          <h5 class="m-0 ms-2 skill-title">{{skill}}</h5>
+          <h5 class="m-0 ms-2 skill-title">{{skill.name}}</h5>
           <div
             class="d-flex flex-row align-items-center skill-percentage position-absolute"
           >
@@ -25,11 +25,11 @@
               class="ms-2"
               color="Accent"
               mode="determinate"
-              [value]="95"
+              [value]="skill.percentage"
               [diameter]="25"
             >
             </mat-progress-spinner>
-            <h6 class="m-0 ms-2">95%</h6>
+            <h6 class="m-0 ms-2">{{skill.percentage}}%</h6>
           </div>
         </div>
       </mat-card>

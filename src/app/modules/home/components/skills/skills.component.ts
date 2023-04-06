@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Skill } from 'src/app/models/skill.interface';
+import { SKILLS } from 'src/assets/data/skill.mock';
 
 @Component({
   selector: 'app-skills',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent {
-  skills:any[] = ["Angukar","HTML","Angular Materials" ,"Bootstrap","SpringBoot","Rust","NODE","Git/Github","9","10"]
+  skills:Skill[] = SKILLS;
 }
