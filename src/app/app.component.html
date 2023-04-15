@@ -1,26 +1,4 @@
-<mat-toolbar class="navbar">
-  <div class="d-flex justify-content-between flex-row w-100">
-    <span class="title">Devly</span>
-    <div class="d-none d-md-flex gap-3">
-      <span class="nav-item">About</span>
-      <span class="nav-item">Projects</span>
-      <span class="nav-item">Experience</span>
-      <span class="nav-item">Skills</span>
-      <span class="nav-item">Blog</span>
-      <span class="nav-item">Gallery</span>
-      <span class="nav-item">Contact</span>
-      <div
-        class="nav-item icon"
-        (mouseout)="icon = 'lock'"
-        (mouseover)="icon = 'lock_open'"
-      >
-        <mat-icon fontSet="material-icons-outlined" class="mt-1">{{
-          icon
-        }}</mat-icon>
-      </div>
-    </div>
-  </div>
-</mat-toolbar>
+<app-navbar></app-navbar>
 <div class="main-container">
   <router-outlet class="sub-container"></router-outlet>
   <app-footer></app-footer>
