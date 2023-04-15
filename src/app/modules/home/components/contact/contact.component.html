@@ -44,10 +44,10 @@
   
           <mat-form-field>
             <mat-label>Message</mat-label>
-            <textarea matInput></textarea>
+            <textarea matInput class="message-area"></textarea>
           </mat-form-field>
   
-          <button mat-flat-button color="accent">Send</button>
+          <button mat-flat-button type="button" color="accent" (click)="sendMail()">Send</button>
         </form>
       </mat-card-content>
     </mat-card>
