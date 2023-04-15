@@ -7,7 +7,7 @@
 <app-blog></app-blog>
 <app-gallery></app-gallery>
 <app-contact></app-contact>
-<div class="main-controller me-3 mb-3 d-flex flex-column">
+<div class="controller me-3 mb-3 d-flex flex-column">
   <a
     color="primary"
     mat-raised-button
@@ -25,7 +25,7 @@
     #topButton
     class="controller-button"
     (click)="scrollToTop()"
-    *ngIf="scrollPosition > 1000"
+    *ngIf="scrollPosition > (windowHeight / 2)"
     matTooltip="To top"
     matTooltipPosition="left"
   >
