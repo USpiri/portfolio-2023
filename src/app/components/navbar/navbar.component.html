@@ -1,14 +1,10 @@
 <mat-toolbar class="navbar">
   <div class="d-flex justify-content-between flex-row w-100">
-    <a class="text-decoration-none text-reset title" [routerLink]="['/']">Devly</a>
+    <a class="text-decoration-none text-reset title" (click)="goTo('')"
+      >Devly</a
+    >
     <div class="d-none d-md-flex gap-3 unselectable">
-      <a class="text-decoration-none text-reset nav-item" href="#about">About</a>
-      <a class="text-decoration-none text-reset nav-item" href="#projects">Projects</a>
-      <a class="text-decoration-none text-reset nav-item" href="#experience">Experience</a>
-      <a class="text-decoration-none text-reset nav-item" href="#skills">Skills</a>
-      <a class="text-decoration-none text-reset nav-item" href="#blog">Blog</a>
-      <a class="text-decoration-none text-reset nav-item" href="#gallery">Gallery</a>
-      <a class="text-decoration-none text-reset nav-item" href="#contact">Contact</a>
+      <span class="nav-item" (click)="goTo( link.route )" *ngFor="let link of navbarItems">{{ link.label }}</span>
       <div
         class="nav-item icon"
         (mouseout)="icon = 'lock'"
