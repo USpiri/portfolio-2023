@@ -7,3 +7,28 @@
 <app-blog></app-blog>
 <app-gallery></app-gallery>
 <app-contact></app-contact>
+<div class="main-controller me-3 mb-3 d-flex flex-column">
+  <a
+    color="primary"
+    mat-raised-button
+    #contactButton
+    class="controller-button mb-2"
+    href="#contact"
+    *ngIf="scrollPosition + (windowHeight * 2) < documentHeight"
+    matTooltip="Contact Me"
+    matTooltipPosition="left"
+  >
+    <mat-icon class="m-0">mail</mat-icon>
+  </a>
+  <button
+    mat-raised-button
+    #topButton
+    class="controller-button"
+    (click)="scrollToTop()"
+    *ngIf="scrollPosition > 1000"
+    matTooltip="To top"
+    matTooltipPosition="left"
+  >
+    <mat-icon class="m-0">arrow_upward</mat-icon>
+  </button>
+</div>
