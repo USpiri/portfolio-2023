@@ -13,9 +13,9 @@ export const PROJECTS: Project[] = [
     image: 'https://example.com/images/ecommerce-site.jpg',
   },
   {
-    title: 'Movie Recommendation App',
-    tags: ['Python', 'Scikit-learn', 'Flask'],
-    description: 'An app that recommends movies based on user preferences',
+    title: 'Portfolio',
+    tags: ['Angular', 'Bootstrap', 'SpringBoot'],
+    description: 'A personal portfolio website showcasing my projects, skills, images and blog posts',
     longDescription:
       "This is a machine learning-based movie recommendation web application built with Python, Scikit-learn, and Flask. It uses collaborative filtering to recommend movies based on a user's ratings and preferences.",
     github: 'https://github.com/username/movie-recommendation-app',
@@ -23,10 +23,10 @@ export const PROJECTS: Project[] = [
     image: 'https://example.com/images/movie-recommendation-app.jpg',
   },
   {
-    title: 'Social Media App',
-    tags: ['React', 'Firebase', 'Material UI'],
+    title: 'Todo CLI',
+    tags: ['Rust'],
     description:
-      'A social media app where users can share posts and interact with each other',
+      'Efficient Rust-based CLI simple to-do list for task management',
     longDescription:
       'This is a social media web application built with React, Firebase, and Material UI. It features user authentication, real-time updates, and the ability to create, read, update, and delete posts.',
     github: 'https://github.com/username/social-media-app',
@@ -34,8 +34,8 @@ export const PROJECTS: Project[] = [
     image: 'https://example.com/images/social-media-app.jpg',
   },
   {
-    title: 'Portfolio Website',
-    tags: ['HTML', 'CSS', 'JavaScript'],
+    title: 'Portfolio (Old)',
+    tags: ['Angular', 'Bootstrap', 'Typescript'],
     description:
       'A personal portfolio website showcasing my projects and skills',
     longDescription:
@@ -45,9 +45,9 @@ export const PROJECTS: Project[] = [
     image: 'https://example.com/images/portfolio-website.jpg',
   },
   {
-    title: 'Task Manager API',
-    tags: ['Node.js', 'Express', 'MongoDB'],
-    description: 'A RESTful API for managing tasks and users',
+    title: 'Sticky Notes',
+    tags: ['Angular', 'Local Storage', 'PWA'],
+    description: 'A Sticky Notes PWA a working with local storage',
     longDescription:
       'This is a RESTful API built with Node.js, Express, and MongoDB. It allows users to create, read, update, and delete tasks and users, and includes features such as pagination, sorting, filtering, and authentication.',
     github: 'https://github.com/username/task-manager-api',
@@ -55,9 +55,9 @@ export const PROJECTS: Project[] = [
     image: 'https://example.com/images/task-manager-api.jpg',
   },
   {
-    title: 'Chat App',
-    tags: ['React', 'Node.js', 'Socket.IO'],
-    description: 'A real-time chat application',
+    title: 'TaskList',
+    tags: ['Angular'],
+    description: 'A TaskList application',
     longDescription:
       'This is a real-time chat application built with React, Node.js, and Socket.IO. It allows users to create and join chat rooms, and includes features such as user authentication, typing indicators, and message history.',
     github: 'https://github.com/username/chat-app',
@@ -65,24 +65,14 @@ export const PROJECTS: Project[] = [
     image: 'https://example.com/images/chat-app.jpg',
   },
   {
-    title: 'Weather App',
-    tags: ['React', 'OpenWeather API', 'Bootstrap'],
+    title: 'Image-WebApp',
+    tags: ['Full Stack', 'Angular', 'SpringBoot'],
     description:
-      'An app that displays the current weather and a 5-day forecast for a location',
+      'An application that displays images and manages them in the backend',
     longDescription:
       'This is a weather web application built with React, the OpenWeather API, and Bootstrap. It displays the current weather and a 5-day forecast for a location, and includes features such as geolocation, unit conversion, and error handling.',
     github: 'https://github.com/username/weather-app',
     link: 'https://my-weather-app.com',
     image: 'https://example.com/images/weather-app.jpg',
-  },
-  {
-    title: 'Expense Tracker',
-    tags: ['React', 'Firebase', 'Materialize'],
-    description: 'A web app for tracking income and expenses',
-    longDescription:
-      'This is a web application built with React, Firebase, and Materialize. It allows users to track their income and expenses, and includes features such as user authentication, category filtering, and monthly and yearly reports.',
-    github: 'https://github.com/username/expense-tracker',
-    link: 'https://expense-tracker-app.firebaseapp.com',
-    image: 'https://example.com/images/expense-tracker.jpg',
   },
 ];
