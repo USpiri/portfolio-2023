@@ -1,4 +1,7 @@
-<div class="p-5 skill-section d-flex align-items-center justify-content-center" id="skills">
+<div
+  class="p-5 skill-section d-flex align-items-center justify-content-center"
+  id="skills"
+>
   <div class="d-lg-flex">
     <div class="w-100 w-lg-50 h-100 sticky-lg-top">
       <div class="p-sm-5 ms-lg-5">
@@ -9,30 +12,14 @@
         </p>
       </div>
     </div>
-    <div class="w-100 w-lg-50 h-100 mt-5 d-flex gap-3 flex-wrap skills-container justify-content-center">
-      <mat-card class="p-2 p-sm-3 skill-card d-flex flex-row align-items-center" *ngFor="let skill of skills">
-        <mat-icon
-          fontSet="fa-brands"
-          fontIcon="fa-angular"
-          class="fs-4 d-flex justify-content-center align-items-center"
-        ></mat-icon>
-        <div class="skill-content d-flex flex-row align-items-center">
-          <h3 class="m-0 ms-2 skill-title fs-5">{{skill.name}}</h3>
-          <div
-            class="d-flex flex-row align-items-center skill-percentage position-absolute"
-          >
-            <mat-progress-spinner
-              class="ms-2"
-              color="Accent"
-              mode="determinate"
-              [value]="skill.percentage"
-              [diameter]="25"
-            >
-            </mat-progress-spinner>
-            <h4 class="m-0 ms-2 fs-6">{{skill.percentage}}%</h4>
-          </div>
-        </div>
-      </mat-card>
+    <div
+      class="w-100 w-lg-50 h-100 mt-5 d-flex gap-3 flex-wrap skills-container justify-content-center"
+    >
+      <app-skill-card
+        *ngFor="let skill of skills"
+        [skill]="skill"
+        class="skill-card"
+      ></app-skill-card>
     </div>
   </div>
 </div>

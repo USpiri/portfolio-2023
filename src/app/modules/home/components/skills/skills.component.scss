@@ -4,35 +4,7 @@
 .skills-container {
   max-width: 710px;
 }
-.skill-card{
-  cursor: pointer;
-  opacity: 1;
-  transition: all 0.5s;
-}
 .skills-container:has(.skill-card:hover) > .skill-card:not(:hover) {
-  opacity: .7;
-}
-.skill-title{
-  color: var(--bg-lighter-30);
-  transition: all .3s;
-  min-width: 80px;
-  font-size: 1.25rem;
-}
-.skill-percentage{
-  visibility: hidden;
-  opacity: 0;
-  transition: all .3s;
-}
-.skill-card:hover .skill-title{
-  visibility: hidden;
-  opacity: 0;
-}
-.skill-card:hover .skill-percentage{
-  opacity: 1;
-  visibility: visible;
-}
-@media (max-width: 576px) {
-  .skill-title{
-    font-size: 1rem;
-  }
+  opacity: 0.7;
+  transition: all 0.5s;
 }

@@ -1,0 +1,23 @@
+<mat-card class="p-2 p-sm-3 skill-card d-flex flex-row align-items-center">
+  <mat-icon
+    fontSet="fa-brands"
+    fontIcon="fa-angular"
+    class="fs-4 d-flex justify-content-center align-items-center"
+  ></mat-icon>
+  <div class="skill-content d-flex flex-row align-items-center">
+    <h3 class="m-0 ms-2 skill-title fs-5">{{ skill.name }}</h3>
+    <div
+      class="d-flex flex-row align-items-center skill-percentage position-absolute"
+    >
+      <mat-progress-spinner
+        class="ms-2"
+        color="Accent"
+        mode="determinate"
+        [value]="skill.percentage"
+        [diameter]="25"
+      >
+      </mat-progress-spinner>
+      <h4 class="m-0 ms-2 fs-6">{{ skill.percentage }}%</h4>
+    </div>
+  </div>
+</mat-card>

@@ -12,6 +12,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { CodeBackgroundComponent } from './components/code-background/code-background.component';
 import { MaterialModule } from './shared/material/material.module';
+import { SkillCardComponent } from './components/skills/components/skill-card/skill-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MaterialModule } from './shared/material/material.module';
     BlogComponent,
     GalleryComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
+    SkillCardComponent
   ],
   imports: [
     CommonModule,
