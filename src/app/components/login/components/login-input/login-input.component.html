@@ -1,0 +1,14 @@
+<div class="command">
+  <input
+    [type]="type"
+    #input
+    [(ngModel)]="value"
+    (keyup.enter)="keyupEnter.emit()"
+    (ngModelChange)="valueChange.emit($event)"
+  />
+  <div id="liner" class="w-100">
+    <span class="liner-before">{{ label }}:&nbsp;</span
+    ><span #typer>{{ text }}</span
+    ><b class="cursor" id="cursor" *ngIf="cursorView">█</b>
+  </div>
+</div>

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
 
 export interface NavItems {
   label:string;
@@ -22,8 +24,8 @@ export class NavbarComponent {
     { label:'Gallery', route:'gallery' },
     { label:'Contact', route:'contact' },
   ]
-
-  constructor(private router: Router) {}
+  dialog = inject( MatDialog );
+  router = inject( Router );
 
   focusComponent(componentName: string) {
     const element = document.getElementById(componentName);
@@ -39,4 +41,11 @@ export class NavbarComponent {
       this.focusComponent(component);
     });
   }
+
+  login(){
+    this.dialog.open(
+      LoginComponent
+    );
+  }
+
 }

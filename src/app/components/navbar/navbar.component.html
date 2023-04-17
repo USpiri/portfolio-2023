@@ -10,7 +10,7 @@
         (mouseout)="icon = 'lock'"
         (mouseover)="icon = 'lock_open'"
       >
-        <mat-icon fontSet="material-icons-outlined" class="mt-1">{{
+        <mat-icon fontSet="material-icons-outlined" class="mt-1" (click)="login()">{{
           icon
         }}</mat-icon>
       </div>

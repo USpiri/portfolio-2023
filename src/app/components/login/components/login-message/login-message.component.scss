@@ -1,0 +1,22 @@
+.error {
+  color: var(--warning-main);
+  font-weight: bolder;
+}
+.success {
+  color: #1dca7a;
+  font-weight: bolder;
+}
+p {
+  position: relative;
+  display: block;
+  line-height: 1.3em;
+  margin: 0;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+  width: 100%;
+}
+@media (max-width: 576px) {
+  p {
+    font-size: 0.8rem;
+  }
+}
