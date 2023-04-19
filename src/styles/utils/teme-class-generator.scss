@@ -1,49 +1,51 @@
-@use 'sass:map';
+@use "sass:map";
 
 @mixin generateColors($prefix, $palette) {
-    $colors-map: ();
-  
-    @each $key, $value in $palette {
-      @if $key !=contrast {
+  $colors-map: ();
 
-        @if $prefix == ''{
-          // Background class
-          .color-#{$key} {
-            background-color: map-get($palette, $key) !important;
-          }
-
-          // Text color class
-          .text-#{$key} {
-            background-color: map-get($palette, $key) !important;
-          }
-        } @else {
-          // Background class
-          .color-#{$prefix}-#{$key} {
-            background-color: map-get($palette, $key) !important;
-          }
-  
-          // Text color class
-          .text-#{$prefix}-#{$key} {
-            background-color: map-get($palette, $key) !important;
-          }
+  @each $key, $value in $palette {
+    @if $key !=contrast {
+      @if $prefix == "" {
+        // Background class
+        .color-#{$key} {
+          background-color: map-get($palette, $key) !important;
         }
-  
-        $map: ();
-        $map: map-merge($map, ($key: $value));
-        $colors-map: map-merge($colors-map, $map);
-      }
-    }
-  
-    :root {
 
-      // Global variable
-      @each $key, $value in $colors-map {
-        @if $prefix == ''{
-          --#{$key}: #{$value};
-        } @else {
-          --#{$prefix}-#{$key}: #{$value};
+        // Text color class
+        .text-#{$key} {
+          background-color: map-get($palette, $key) !important;
+        }
+      } @else {
+        // Background class
+        .color-#{$prefix}-#{$key} {
+          background-color: map-get($palette, $key) !important;
+        }
+
+        // Text color class
+        .text-#{$prefix}-#{$key} {
+          background-color: map-get($palette, $key) !important;
         }
       }
-      
+
+      $map: ();
+      $map: map-merge(
+        $map,
+        (
+          $key: $value,
+        )
+      );
+      $colors-map: map-merge($colors-map, $map);
     }
+  }
+
+  :root {
+    // Global variable
+    @each $key, $value in $colors-map {
+      @if $prefix == "" {
+        --#{$key}: #{$value};
+      } @else {
+        --#{$prefix}-#{$key}: #{$value};
+      }
+    }
+  }
 }

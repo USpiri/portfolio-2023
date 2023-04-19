@@ -5,7 +5,7 @@
   transition: all 0.5s;
 }
 .blog-container:has(.blog-card:hover) > .blog-card:not(:hover) {
-  opacity: .5;
+  opacity: 0.5;
 }
 .blog-card:hover {
   transform: scale(1.1);

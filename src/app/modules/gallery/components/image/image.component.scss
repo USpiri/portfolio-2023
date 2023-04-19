@@ -28,7 +28,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(.5);
+        transform: translate(-50%, -50%) scale(0.5);
         transition: all 0.2s ease-in-out;
         opacity: 0;
       }
@@ -36,8 +36,8 @@
 
     &:hover .overlay {
       opacity: 1;
-      background-color: rgba(0, 0, 0, .5);
-      .icon{
+      background-color: rgba(0, 0, 0, 0.5);
+      .icon {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
       }

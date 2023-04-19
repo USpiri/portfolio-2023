@@ -1,16 +1,16 @@
-.contact-container{
+.contact-container {
   min-height: calc(100vh);
 }
 
-.contact-form{
+.contact-form {
   min-width: 600px;
 }
 
 @media (max-width: 768px) {
-  .contact-form{
+  .contact-form {
     min-width: 100%;
   }
 }
-.message-area{
+.message-area {
   min-height: 150px;
 }

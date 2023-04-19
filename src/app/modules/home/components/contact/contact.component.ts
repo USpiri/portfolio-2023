@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -7,10 +7,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent {
-  constructor(private snackBar: MatSnackBar) {}
+  snackBar: MatSnackBar = inject(MatSnackBar);
   sendMail() {
     this.snackBar.open('Mail sended succesfully!', undefined, {
-      duration: 2000
+      duration: 2000,
     });
   }
 }

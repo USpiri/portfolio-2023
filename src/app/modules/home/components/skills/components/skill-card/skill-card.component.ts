@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Skill } from 'src/app/models/skill.interface';
+import { Skill } from '@models';
 
 @Component({
   selector: 'app-skill-card',
@@ -11,6 +11,6 @@ export class SkillCardComponent {
     name: '',
     percentage: 0,
     icon: '',
-    icon_family: ''
+    icon_family: '',
   };
 }

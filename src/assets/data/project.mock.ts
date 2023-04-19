@@ -1,4 +1,4 @@
-import { Project } from "src/app/models/project.interface";
+import { Project } from 'src/app/models/project.interface';
 
 export const PROJECTS: Project[] = [
   {
@@ -15,7 +15,8 @@ export const PROJECTS: Project[] = [
   {
     title: 'Portfolio',
     tags: ['Angular', 'Bootstrap', 'SpringBoot'],
-    description: 'A personal portfolio website showcasing my projects, skills, images and blog posts',
+    description:
+      'A personal portfolio website showcasing my projects, skills, images and blog posts',
     longDescription:
       "This is a machine learning-based movie recommendation web application built with Python, Scikit-learn, and Flask. It uses collaborative filtering to recommend movies based on a user's ratings and preferences.",
     github: 'https://github.com/username/movie-recommendation-app',

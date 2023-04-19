@@ -1,4 +1,4 @@
-.top-shadow{
+.top-shadow {
   z-index: 10;
   height: 40px;
   width: 100%;
@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   pointer-events: none;
-  background: linear-gradient(0deg,hsla(0,0%,8%,0),#151515);
+  background: linear-gradient(0deg, hsla(0, 0%, 8%, 0), #151515);
 }
 
 .code-background {
@@ -21,7 +21,7 @@
 
 .code-text {
   text-shadow: 0 0 2px #282828;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   font-weight: 800;
   line-height: normal;
   font-size: 1.07rem;
@@ -37,7 +37,7 @@
   overflow: hidden;
 }
 
-.bottom-shadow{
+.bottom-shadow {
   z-index: 10;
   height: 50px;
   width: 100%;
@@ -45,7 +45,7 @@
   bottom: 0;
   left: 0;
   pointer-events: none;
-  background: linear-gradient(180deg,hsla(0,0%,8%,0),#151515);
+  background: linear-gradient(180deg, hsla(0, 0%, 8%, 0), #151515);
 }
 
 @media (max-width: 768px) {

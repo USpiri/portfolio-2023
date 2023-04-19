@@ -4,11 +4,11 @@ import { DashboardComponent } from './dashboard.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: '**', redirectTo:'' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class DashboardRoutingModule {}

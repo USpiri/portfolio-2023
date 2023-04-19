@@ -6,7 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { LoginInputComponent } from './components/login-input/login-input.component';
+import { LoginInputComponent } from './components';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +33,10 @@ export class LoginComponent implements OnInit {
   dialogRef = inject(MatDialogRef<LoginComponent>);
 
   async ngOnInit(): Promise<void> {
-    await this.addLine('Welcome to DevlyConsole. Confirm your identity.', this.preconsole);
+    await this.addLine(
+      'Welcome to DevlyConsole. Confirm your identity.',
+      this.preconsole
+    );
     await this.addLine('Press [ENTER] to proceed.', this.preconsole);
     await this.breakline(this.preconsole);
     this.usernameView = true;
@@ -83,7 +86,7 @@ export class LoginComponent implements OnInit {
       .join('');
   }
 
-  focusComponent(){
+  focusComponent() {
     if (this.passwordView) {
       setTimeout(() => {
         this.passwordInput.setFocus();

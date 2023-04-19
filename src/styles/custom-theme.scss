@@ -29,7 +29,10 @@ $angular-theme: mat.define-dark-theme(
     typography: font.$fontConfig,
   )
 );
-$angular-theme: set-background.modify-background($angular-theme, background.$mat-dark-theme-background);
+$angular-theme: set-background.modify-background(
+  $angular-theme,
+  background.$mat-dark-theme-background
+);
 
 // Theme Init
 @include mat.all-component-themes($angular-theme);
@@ -68,13 +71,9 @@ $angular-theme: set-background.modify-background($angular-theme, background.$mat
 }
 
 // Basic customizations
-// html,
-// body {
-//   height: 100%;
-// }
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
 
@@ -85,4 +84,4 @@ body {
   user-select: none; /* Standard */
 }
 
-@import '../styles/components/scroll-bar.scss';
+@import "../styles/components/scroll-bar.scss";

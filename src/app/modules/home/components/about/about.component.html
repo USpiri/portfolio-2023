@@ -1,4 +1,7 @@
-<div class="about-container d-flex align-items-center justify-content-center py-5" id="about">
+<div
+  class="about-container d-flex align-items-center justify-content-center py-5"
+  id="about"
+>
   <div class="d-flex flex-column align-items-center">
     <h2 class="mb-5 fs-1">About me</h2>
     <div class="d-md-flex px-3">
@@ -8,16 +11,17 @@
             <img
               [src]="user.image"
               class="about-image"
-              alt="{{user.name}}"
+              alt="{{ user.name }}"
               title="Profile image"
             />
           </mat-card-content>
         </mat-card>
       </div>
       <div class="about-description mt-5 mt-md-0">
-        <div  *ngFor="let description of user.description; let i = index">
+        <div *ngFor="let description of user.description; let i = index">
           <p class="mb-3" *ngIf="i === 0; else other">
-            My name is <strong>{{ user.name }}</strong>, I live in {{ user.location }}. {{ description }} 
+            My name is <strong>{{ user.name }}</strong
+            >, I live in {{ user.location }}. {{ description }}
           </p>
           <ng-template #other>
             <p class="mb-3">{{ description }}</p>

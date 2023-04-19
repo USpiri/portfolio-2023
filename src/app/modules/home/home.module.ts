@@ -2,17 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { LandingComponent } from './components/landing/landing.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { ExperienceComponent } from './components/experience/experience.component';
-import { SkillsComponent } from './components/skills/skills.component';
-import { BlogComponent } from './components/blog/blog.component';
-import { GalleryComponent } from './components/gallery/gallery.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { AboutComponent } from './components/about/about.component';
-import { CodeBackgroundComponent } from './components/code-background/code-background.component';
-import { MaterialModule } from './shared/material/material.module';
-import { SkillCardComponent } from './components/skills/components/skill-card/skill-card.component';
+import { MaterialModule } from './shared/material.module';
+import {
+  AboutComponent,
+  BlogComponent,
+  CodeBackgroundComponent,
+  ContactComponent,
+  ExperienceComponent,
+  GalleryPageComponent,
+  LandingComponent,
+  ProjectsComponent,
+  SkillCardComponent,
+  SkillsComponent,
+} from './components';
 
 @NgModule({
   declarations: [
@@ -23,15 +25,11 @@ import { SkillCardComponent } from './components/skills/components/skill-card/sk
     ExperienceComponent,
     SkillsComponent,
     BlogComponent,
-    GalleryComponent,
+    GalleryPageComponent,
     ContactComponent,
     AboutComponent,
-    SkillCardComponent
+    SkillCardComponent,
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    MaterialModule
-  ]
+  imports: [CommonModule, HomeRoutingModule, MaterialModule],
 })
-export class HomeModule { }
+export class HomeModule {}

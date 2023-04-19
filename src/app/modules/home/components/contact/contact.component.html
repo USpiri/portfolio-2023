@@ -8,21 +8,37 @@
       <p class="section-description">
         I hope you've enjoyed exploring my portfolio, projects, and gallery. I'm
         always looking for ways to improve and grow, and I value your feedback.
-        Whether you have a question, a comment, or just want to say hello, I'd love
-        to hear from you.
+        Whether you have a question, a comment, or just want to say hello, I'd
+        love to hear from you.
       </p>
       <div class="d-flex mt-4 gap-3 justify-content-around mb-4 mb-lg-0">
         <button mat-icon-button>
-          <mat-icon fontSet="fa-brands" fontIcon="fa-twitter" class="mb-1"></mat-icon>
+          <mat-icon
+            fontSet="fa-brands"
+            fontIcon="fa-twitter"
+            class="mb-1"
+          ></mat-icon>
         </button>
         <button mat-icon-button>
-          <mat-icon fontSet="fa-brands" fontIcon="fa-instagram" class="mb-1"></mat-icon>
+          <mat-icon
+            fontSet="fa-brands"
+            fontIcon="fa-instagram"
+            class="mb-1"
+          ></mat-icon>
         </button>
         <button mat-icon-button>
-          <mat-icon fontSet="fa-brands" fontIcon="fa-github" class="mb-1"></mat-icon>
+          <mat-icon
+            fontSet="fa-brands"
+            fontIcon="fa-github"
+            class="mb-1"
+          ></mat-icon>
         </button>
         <button mat-icon-button>
-          <mat-icon fontSet="fa-brands" fontIcon="fa-linkedin" class="mb-1"></mat-icon>
+          <mat-icon
+            fontSet="fa-brands"
+            fontIcon="fa-linkedin"
+            class="mb-1"
+          ></mat-icon>
         </button>
       </div>
     </div>
@@ -31,23 +47,30 @@
         <form class="d-flex flex-column contact-form">
           <mat-form-field>
             <mat-label>Name</mat-label>
-            <input matInput placeholder="Ex. Jhon Doe"/>
+            <input matInput placeholder="Ex. Jhon Doe" />
           </mat-form-field>
           <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Ex. jhondoe@email.com"/>
+            <input matInput placeholder="Ex. jhondoe@email.com" />
           </mat-form-field>
           <mat-form-field>
             <mat-label>Subject</mat-label>
-            <input matInput placeholder="Ex. Hello!"/>
+            <input matInput placeholder="Ex. Hello!" />
           </mat-form-field>
-  
+
           <mat-form-field>
             <mat-label>Message</mat-label>
             <textarea matInput class="message-area"></textarea>
           </mat-form-field>
-  
-          <button mat-flat-button type="button" color="accent" (click)="sendMail()">Send</button>
+
+          <button
+            mat-flat-button
+            type="button"
+            color="accent"
+            (click)="sendMail()"
+          >
+            Send
+          </button>
         </form>
       </mat-card-content>
     </mat-card>

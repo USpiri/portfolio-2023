@@ -4,11 +4,11 @@ import { GalleryComponent } from './gallery.component';
 
 const routes: Routes = [
   { path: '', component: GalleryComponent },
-  { path: '**', redirectTo:'' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class GalleryRoutingModule {}

@@ -4,19 +4,23 @@
       <div class="p-sm-5 ms-sm-5 project-header mb-5 mb-sm-0">
         <h2 class="mb-2 mt-5 fs-1">Projects</h2>
         <p class="section-description">
-          These are some of my latest programming projects, each one
-          is a unique reflection of my creativity, expertise, and passion for
-          coding. From web development to command-line applications in Rust.
+          These are some of my latest programming projects, each one is a unique
+          reflection of my creativity, expertise, and passion for coding. From
+          web development to command-line applications in Rust.
         </p>
       </div>
     </div>
-    <div class="w-100 w-lg-50 row row-cols-auto gap-3 row-cols-xl-2 gap-xl-4 projects-container m-0">
+    <div
+      class="w-100 w-lg-50 row row-cols-auto gap-3 row-cols-xl-2 gap-xl-4 projects-container m-0"
+    >
       <mat-card
         class="col project-card f-flex justify-content-between"
         *ngFor="let project of projects"
       >
         <div>
-          <span class="project-theme text-uppercase">{{ project.tags[0] }}</span>
+          <span class="project-theme text-uppercase">{{
+            project.tags[0]
+          }}</span>
           <h3 class="text-break">{{ project.title }}</h3>
           <p class="project-description">
             {{ project.description }}

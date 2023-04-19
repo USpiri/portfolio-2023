@@ -4,15 +4,23 @@
       >Devly</a
     >
     <div class="d-none d-md-flex gap-3 unselectable">
-      <span class="nav-item" (click)="goTo( link.route )" *ngFor="let link of navbarItems">{{ link.label }}</span>
+      <span
+        class="nav-item"
+        (click)="goTo(link.route)"
+        *ngFor="let link of navbarItems"
+        >{{ link.label }}</span
+      >
       <div
         class="nav-item icon"
         (mouseout)="icon = 'lock'"
         (mouseover)="icon = 'lock_open'"
       >
-        <mat-icon fontSet="material-icons-outlined" class="mt-1" (click)="login()">{{
-          icon
-        }}</mat-icon>
+        <mat-icon
+          fontSet="material-icons-outlined"
+          class="mt-1"
+          (click)="login()"
+          >{{ icon }}</mat-icon
+        >
       </div>
     </div>
   </div>

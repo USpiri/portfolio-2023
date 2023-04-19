@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-code-background',
   templateUrl: './code-background.component.html',
   styleUrls: ['./code-background.component.scss'],
 })
-export class CodeBackgroundComponent {
+export class CodeBackgroundComponent implements OnInit {
   codeText: string = ''; // Aquí se almacenará el texto que se está escribiendo.
   codeTextFull: string =
     "const app = express();\napp.use(bodyParser.json());\n\nconst users: User[] = [];\n\napp.get('/users', (req: Request, res: Response) => {\n    res.json(users);\n});\n\napp.post('/users', (req: Request, res: Response) => {\n    const { name, email } = req.body;\n\n    if (!name || !email) {\n        return res.status(400).send('Name and email are required');\n    }\n\n    const newUser: User = { id: uuid(), name, email };\n    users.push(newUser);\n\n    res.status(201).json(newUser);\n});"; // Aquí se almacena el texto completo que se va a escribir.
@@ -24,13 +24,19 @@ export class CodeBackgroundComponent {
   }
 
   async animate(): Promise<void> {
-    const codes = [ this.tomlCode, this.scssCode, this.rustCode, this.codeTextFull, this.solanaCode]; // arreglo con los códigos posibles
+    const codes = [
+      this.tomlCode,
+      this.scssCode,
+      this.rustCode,
+      this.codeTextFull,
+      this.solanaCode,
+    ]; // arreglo con los códigos posibles
     const code = codes[Math.floor(Math.random() * codes.length)]; // código aleatorio
-  
+
     await this.animateTyping(code); // ejecutar la función animateTyping con el código aleatorio
-  
+
     // esperar hasta que se termine de ejecutar la función animateTyping y luego llamar a esta función nuevamente
-    setTimeout( async() => {
+    setTimeout(async () => {
       await this.animate();
     }, code.length * 2 * this.typingSpeed + 5000); // esperar el tiempo que toma escribir el código y 3 segundos adicionales antes de llamar a la función nuevamente
   }
