@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  scrollPosition: number = 0;
-  windowHeight: number = 0;
-  documentHeight: number = 0;
+  scrollPosition = 0;
+  windowHeight = 0;
+  documentHeight = 0;
 
   ngOnInit(): void {
     window.addEventListener('scroll', this.onWindowScroll.bind(this));

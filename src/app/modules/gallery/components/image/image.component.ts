@@ -6,11 +6,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./image.component.scss'],
 })
 export class ImageComponent {
-  @Input() src: string = '';
-  @Input() width: string = '';
-  @Output() onClick: EventEmitter<any> = new EventEmitter();
+  @Input() src = '';
+  @Input() width = '';
+  @Output() imageClick: EventEmitter<unknown> = new EventEmitter();
 
   click() {
-    this.onClick.emit();
+    this.imageClick.emit();
   }
 }

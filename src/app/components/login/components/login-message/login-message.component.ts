@@ -1,14 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login-message',
   templateUrl: './login-message.component.html',
   styleUrls: ['./login-message.component.scss'],
 })
-export class LoginMessageComponent {
+export class LoginMessageComponent implements OnInit{
   @Input() type: 'error' | 'success' = 'error';
-  message: string = '';
-  showedMessage: string = '';
+  message = '';
+  showedMessage = '';
 
   ngOnInit(): void {
     this.message =

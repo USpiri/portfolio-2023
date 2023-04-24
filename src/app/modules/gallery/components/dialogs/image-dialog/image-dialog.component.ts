@@ -7,5 +7,5 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./image-dialog.component.scss'],
 })
 export class ImageDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public src: String) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public src: string) {}
 }

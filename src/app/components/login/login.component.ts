@@ -20,15 +20,15 @@ export class LoginComponent implements OnInit {
   @ViewChild('userInput') userInput!: LoginInputComponent;
   @ViewChild('passwordInput') passwordInput!: LoginInputComponent;
 
-  usernameView: boolean = false;
-  passwordView: boolean = false;
-  errorView: boolean = false;
-  successView: boolean = false;
-  username: string = '';
-  password: string = '';
+  usernameView = false;
+  passwordView = false;
+  errorView = false;
+  successView = false;
+  username = '';
+  password = '';
 
-  usernameTEST: string = 'Username';
-  passwordTEST: string = '12345678';
+  usernameTEST = 'Username';
+  passwordTEST = '12345678';
 
   dialogRef = inject(MatDialogRef<LoginComponent>);
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     setTimeout(() => {
       try {
         this.userInput.setFocus();
-      } catch {}
+      } catch { /* empty */ }
     }, 10);
   }
 
@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
 
   async breakline(element: ElementRef): Promise<void> {
     return new Promise((resolve) => {
-      let br = document.createElement('br');
+      const br = document.createElement('br');
       element.nativeElement.appendChild(br);
       resolve();
     });

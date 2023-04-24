@@ -13,12 +13,12 @@ import {
   styleUrls: ['./login-input.component.scss'],
 })
 export class LoginInputComponent {
-  @Input() type: string = 'text';
-  @Input() label: string = '';
-  @Input() value: string = '';
-  @Input() isSecret: boolean = false;
-  @Input() cursorView: boolean = true;
-  @Output() keyupEnter: EventEmitter<any> = new EventEmitter();
+  @Input() type = 'text';
+  @Input() label = '';
+  @Input() value = '';
+  @Input() isSecret = false;
+  @Input() cursorView = true;
+  @Output() keyupEnter: EventEmitter<unknown> = new EventEmitter();
   @Output() valueChange = new EventEmitter<string>();
 
   @ViewChild('input') inputElement!: ElementRef;

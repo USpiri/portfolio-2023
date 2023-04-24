@@ -1,5 +1,5 @@
 <p>
-  <span [ngClass]="type == 'success' ? 'success' : 'error'"
+  <span [ngClass]="type === 'success' ? 'success' : 'error'"
     >{{ type === "success" ? "Success!" : "Error:" }} </span
   >{{ showedMessage }}
 </p>
