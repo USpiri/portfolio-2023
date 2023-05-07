@@ -84,4 +84,8 @@ body {
   user-select: none; /* Standard */
 }
 
+mat-icon {
+  overflow: visible !important;
+}
+
 @import "../styles/components/scroll-bar.scss";

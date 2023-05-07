@@ -1,0 +1,21 @@
+<mat-card class="project-card d-flex justify-content-between">
+  <div>
+    <span class="project-theme text-uppercase mb-2">{{ project.tags[0] }}</span>
+    <h3 class="text-break">{{ project.title }}</h3>
+    <p class="project-description">
+      {{ project.description }}
+    </p>
+  </div>
+  <div class="d-flex flex-row">
+    <button mat-button>
+      Github<mat-icon
+        fontSet="fa-brands"
+        fontIcon="fa-github"
+        class="d-flex"
+      ></mat-icon>
+    </button>
+    <button mat-button (click)="openDialog()">
+      More<mat-icon>info_outlined</mat-icon>
+    </button>
+  </div>
+</mat-card>

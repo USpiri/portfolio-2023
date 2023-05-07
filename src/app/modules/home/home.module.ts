@@ -15,6 +15,8 @@ import {
   SkillCardComponent,
   SkillsComponent,
 } from './components';
+import { ProjectComponent } from './components/projects/components/project/project.component';
+import { ProjectModalComponent } from './components/projects/components/project-modal/project-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import {
     ContactComponent,
     AboutComponent,
     SkillCardComponent,
+    ProjectComponent,
+    ProjectModalComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, MaterialModule],
 })

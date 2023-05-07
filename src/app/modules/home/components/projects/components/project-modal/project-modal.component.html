@@ -1,0 +1,35 @@
+<div mat-dialog-content class="p-3 d-flex flex-column gap-3">
+  <div class="project-content">
+    <div class="d-flex gap-2 mb-2">
+      <span
+        class="project-tags text-uppercase"
+        *ngFor="let tag of project.tags"
+        >{{ tag }}</span
+      >
+    </div>
+    <h3 class="text-break mb-3">{{ project.title }}</h3>
+    <p class="project-description">
+      {{ project.longDescription }}
+    </p>
+  </div>
+  <img
+    src="https://picsum.photos/640/360"
+    alt="Project {{ project.title }} image"
+    class="project-content"
+  />
+  <div class="d-flex flex-row justify-content-between">
+    <button mat-button (click)="close()">
+      Close<mat-icon>close</mat-icon>
+    </button>
+    <div class="d-flex flex-row justify-content-end">
+      <button mat-button>
+        Github<mat-icon
+          fontSet="fa-brands"
+          fontIcon="fa-github"
+          class="d-flex"
+        ></mat-icon>
+      </button>
+      <button mat-button>Web<mat-icon>language</mat-icon></button>
+    </div>
+  </div>
+</div>
