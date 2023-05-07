@@ -1,8 +1,7 @@
 .experience-container {
   min-height: calc(100vh - 64px);
 }
-.experience-card,
-.experience-description {
+.experience-card {
   max-width: 710px;
 }
 .experience-card {
@@ -16,13 +15,4 @@
 .experience-card:hover {
   transform: scale(1.1);
   z-index: 5;
-}
-.experience-job {
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: var(--bg-lighter-30);
-}
-.experience-description {
-  color: var(--bg-lighter-30);
 }

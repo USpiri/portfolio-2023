@@ -17,6 +17,8 @@ import {
 } from './components';
 import { ProjectComponent } from './components/projects/components/project/project.component';
 import { ProjectModalComponent } from './components/projects/components/project-modal/project-modal.component';
+import { ExperienceCardComponent } from './components/experience/components/experience-card/experience-card.component';
+import { BlogCardComponent } from './components/blog/components/blog-card/blog-card.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { ProjectModalComponent } from './components/projects/components/project-
     SkillCardComponent,
     ProjectComponent,
     ProjectModalComponent,
+    ExperienceCardComponent,
+    BlogCardComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, MaterialModule],
 })

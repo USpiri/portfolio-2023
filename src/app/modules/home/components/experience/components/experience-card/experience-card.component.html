@@ -1,0 +1,16 @@
+<mat-card class="px-5 py-4 d-flex w-100 justify-content-between">
+  <div>
+    <div class="d-flex justify-content-between">
+      <div>
+        <span class="experience-job text-uppercase">{{
+          experience.company
+        }}</span>
+        <h3>{{ experience.jobTitle }}</h3>
+      </div>
+      <button mat-button>Web<mat-icon>language</mat-icon></button>
+    </div>
+    <p class="experience-description">
+      {{ experience.description }}
+    </p>
+  </div>
+</mat-card>
