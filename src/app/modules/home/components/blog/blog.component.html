@@ -6,22 +6,10 @@
   <div
     class="d-flex flex-wrap gap-4 align-items-center w-100 px-md-5 justify-content-center blog-container"
   >
-    <mat-card
-      class="blog-card d-flex justify-content-between p-4"
+    <app-blog-card
+      [blog]="blog"
       *ngFor="let blog of blogs"
-    >
-      <div>
-        <span class="blog-date"
-          >{{ blog.date | date : "MMMM d, y" }} • {{ blog.author }}</span
-        >
-        <h3 class="mt-2 mb-4">{{ blog.title }}</h3>
-        <p class="blog-description">
-          {{ blog.description }}
-        </p>
-      </div>
-      <div class="w-100 d-flex justify-content-end">
-        <button mat-button>Read more<mat-icon>language</mat-icon></button>
-      </div>
-    </mat-card>
+      class="blog-card"
+    ></app-blog-card>
   </div>
 </div>
