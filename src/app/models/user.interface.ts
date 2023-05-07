@@ -1,6 +1,6 @@
 export interface User {
   name: string;
-  label: string;
+  title: string;
   description: string[];
   birthDate: Date;
   phone: string;
