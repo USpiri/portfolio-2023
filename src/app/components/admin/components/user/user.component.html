@@ -1,0 +1,83 @@
+<h2 class="mb-3">User</h2>
+<div class="w-100">
+  <form [formGroup]="userForm" class="d-flex flex-column">
+    <mat-form-field appearance="outline">
+      <mat-label>Full name</mat-label>
+      <input matInput placeholder="Jhon Doe" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Web developer" formControlName="title" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Birth date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDate" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput placeholder="123 4567890" formControlName="phone" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="email@company.com" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Location</mat-label>
+      <input matInput placeholder="Somewhere" formControlName="location" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        placeholder="Some description..."
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+    <h3 class="my-3">Image</h3>
+    <div class="d-flex flex-row gap-3">
+      <div class="d-flex">
+        <mat-card class="preview">
+          <mat-card-content>
+            <img
+              [src]="user.image"
+              class="preview-image"
+              alt="{{ user.name }}"
+              title="{{ user.name }}"
+            />
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div>
+        <div class="d-flex flex-column gap-2">
+          <div>
+            <button
+              mat-flat-button
+              color="primary"
+              class="me-2"
+              (click)="fileInput.click()"
+            >
+              <mat-icon>attach_file</mat-icon> Change image
+            </button>
+          </div>
+          <div class="d-flex gap-2">
+            <div *ngIf="fileName" class="delete-file">
+              <mat-icon>close</mat-icon>
+            </div>
+            {{ fileName }}
+          </div>
+        </div>
+        <input
+          type="file"
+          hidden
+          #fileInput
+          (change)="onFileSelected($event)"
+        />
+      </div>
+    </div>
+  </form>
+</div>

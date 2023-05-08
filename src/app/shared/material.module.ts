@@ -10,7 +10,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatIconModule,
     MatTooltipModule,
     MatDialogModule,
   ],

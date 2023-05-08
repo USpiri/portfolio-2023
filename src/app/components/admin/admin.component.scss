@@ -1,0 +1,20 @@
+.panel-content {
+  min-height: 500px;
+}
+.selected {
+  font-weight: bolder;
+  color: #ffffff;
+  cursor: default;
+}
+.tabs {
+  width: 200px;
+}
+li {
+  color: var(--bg-lighter-30);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+li:hover {
+  color: #ffffff;
+}

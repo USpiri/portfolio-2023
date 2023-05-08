@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login';
+import { AdminComponent } from '../admin/admin.component';
 
 export interface NavItems {
   label: string;
@@ -44,5 +45,12 @@ export class NavbarComponent {
 
   login() {
     this.dialog.open(LoginComponent);
+  }
+
+  openSettings() {
+    this.dialog.open(AdminComponent, {
+      autoFocus: false,
+      minWidth: '55vw',
+    });
   }
 }

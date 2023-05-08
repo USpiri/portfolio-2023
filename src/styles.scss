@@ -17,3 +17,8 @@ p {
   padding: 16px;
   color: var(--bg-lighter-30);
 }
+.option-button {
+  padding: 0;
+  width: 36px !important;
+  min-width: unset !important;
+}

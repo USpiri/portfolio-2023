@@ -11,6 +11,7 @@ import {
   LoginComponent,
   LoginInputComponent,
   LoginMessageComponent,
+  AdminModule,
 } from './components';
 import { MaterialModule } from '@shared/material.module';
 
@@ -29,6 +30,7 @@ import { MaterialModule } from '@shared/material.module';
     MaterialModule,
     FormsModule,
     AppRoutingModule,
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

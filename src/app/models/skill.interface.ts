@@ -1,6 +1,7 @@
 export interface Skill {
+  _id?: string;
   name: string;
   percentage: number;
   icon: string;
-  icon_family: string;
+  iconFamily: string;
 }

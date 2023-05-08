@@ -11,6 +11,6 @@ export class SkillCardComponent {
     name: '',
     percentage: 0,
     icon: '',
-    icon_family: '',
+    iconFamily: '',
   };
 }

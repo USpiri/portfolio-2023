@@ -1,0 +1,42 @@
+<h2 mat-dialog-title class="mb-3">Devly Portfolio panel</h2>
+<mat-dialog-content class="py-0 pe-2">
+  <div class="panel-content d-flex flex-row">
+    <div class="unselectable">
+      <ul class="tabs list-unstyled p-3 d-flex flex-column gap-2 sticky-top">
+        <li
+          *ngFor="let option of menu"
+          class="selected"
+          [ngClass]="{ selected: selected === option }"
+          (click)="selectMenu(option)"
+        >
+          {{ option }}
+        </li>
+      </ul>
+      <div
+        class="position-absolute bottom-0 start-0 tabs d-flex flex-column gap-2 m-3 ms-4 pe-4"
+      >
+        <button mat-button mat-dialog-close class="w-100">Cancel</button>
+        <button mat-button mat-flat-button color="primary" class="w-100">
+          Save<mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="p-3 px-4 w-100">
+      <container-element [ngSwitch]="selected">
+        <app-user *ngSwitchCase="'User'"></app-user>
+        <app-projects *ngSwitchCase="'Projects'"></app-projects>
+        <app-experiences *ngSwitchCase="'Experiences'"></app-experiences>
+        <app-skills *ngSwitchCase="'Skills'"></app-skills>
+        <app-gallery *ngSwitchCase="'Gallery'"></app-gallery>
+        <app-media *ngSwitchCase="'Social Media'"></app-media>
+      </container-element>
+    </div>
+  </div>
+</mat-dialog-content>
+<!-- <mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-flat-button color="primary">
+    Save<mat-icon>save</mat-icon>
+  </button>
+</mat-dialog-actions> -->

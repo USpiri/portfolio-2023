@@ -1,0 +1,28 @@
+.gallery {
+  columns: 250px;
+  gap: 15px;
+}
+.gallery-image {
+  border-radius: 5px;
+}
+.categories {
+  color: var(--bg-lighter-30);
+  p {
+    cursor: pointer;
+  }
+  .selected {
+    color: white;
+  }
+}
+.delete-file {
+  cursor: pointer;
+}
+.preview-image {
+  width: 200px;
+  transition: all 0.3s;
+  border-radius: 5px;
+}
+.preview {
+  background-color: var(--bg-lighter-10);
+  width: unset;
+}

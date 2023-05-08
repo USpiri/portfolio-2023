@@ -1,0 +1,150 @@
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h2>Projects</h2>
+  <button mat-button class="option-button" (click)="toggleUpload()">
+    <mat-icon class="d-flex align-items-center m-0 p-0">{{
+      !showForm ? "add" : "arrow_back"
+    }}</mat-icon>
+  </button>
+</div>
+<div *ngIf="!showForm">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Number Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <!-- Main Tecnology Column -->
+    <ng-container matColumnDef="tech">
+      <th mat-header-cell *matHeaderCellDef>Tecnology</th>
+      <td mat-cell *matCellDef="let element">{{ element.tags[0] }}</td>
+    </ng-container>
+
+    <!-- Options Column -->
+    <ng-container matColumnDef="options">
+      <th mat-header-cell *matHeaderCellDef class="text-end">
+        <span class="me-2">Options</span>
+      </th>
+      <td mat-cell *matCellDef="let element" class="text-end">
+        <div class="d-flex gap-2 justify-content-end">
+          <button mat-button class="option-button">
+            <mat-icon class="m-0">delete</mat-icon>
+          </button>
+          <button
+            mat-button
+            class="option-button"
+            (click)="selectProject(element)"
+          >
+            <mat-icon class="m-0">edit</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+<div class="w-100 mt-4" *ngIf="showForm">
+  <form [formGroup]="projectForm" class="d-flex flex-column">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Best project" formControlName="title" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Github</mat-label>
+      <input matInput placeholder="Github" formControlName="github" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Website</mat-label>
+      <input matInput placeholder="Website" formControlName="link" />
+    </mat-form-field>
+    <mat-form-field class="example-chip-list" appearance="outline">
+      <mat-label>Tags</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Enter tags">
+        <mat-chip-row
+          *ngFor="let tag of projectForm.get('tags')!.value"
+          (removed)="remove(tag)"
+          [editable]="true"
+          (edited)="edit(tag, $event)"
+          [aria-description]="'press enter to edit ' + tag"
+        >
+          {{ tag }}
+          <button matChipRemove [attr.aria-label]="'remove ' + tag">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        <input
+          placeholder="New fruit..."
+          [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)"
+        />
+      </mat-chip-grid>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        placeholder="Some description..."
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Extended description</mat-label>
+      <textarea
+        matInput
+        placeholder="Some description..."
+        formControlName="longDescription"
+      ></textarea>
+    </mat-form-field>
+    <h3 class="my-3">Image</h3>
+    <div class="d-flex flex-column gap-3">
+      <div>
+        <div class="d-flex flex-row align-items-center gap-2">
+          <div>
+            <button
+              mat-flat-button
+              color="primary"
+              class="me-2"
+              (click)="fileInput.click()"
+            >
+              <mat-icon>attach_file</mat-icon> Change image
+            </button>
+          </div>
+          <div class="d-flex gap-2 align-items-center">
+            <div *ngIf="fileName" class="delete-file d-flex align-items-center">
+              <mat-icon>close</mat-icon>
+            </div>
+            {{ fileName }}
+          </div>
+        </div>
+        <input
+          type="file"
+          hidden
+          #fileInput
+          (change)="onFileSelected($event)"
+        />
+      </div>
+      <div class="d-flex">
+        <mat-card class="preview">
+          <mat-card-content>
+            <img
+              [src]="projectForm.get('image')!.value"
+              class="about-image"
+              alt="{{ projectForm.get('title')!.value }} image"
+              title="Profile image"
+            />
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </form>
+</div>

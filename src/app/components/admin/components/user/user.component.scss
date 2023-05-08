@@ -1,0 +1,13 @@
+textarea {
+  min-height: 200px;
+}
+.preview {
+  background-color: var(--bg-lighter-10);
+}
+.preview-image {
+  width: 200px;
+  transition: all 0.3s;
+}
+.delete-file {
+  cursor: pointer;
+}

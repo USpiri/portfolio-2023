@@ -1,0 +1,77 @@
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h2>Experiences</h2>
+  <button mat-button class="option-button" (click)="toggleUpload()">
+    <mat-icon class="d-flex align-items-center m-0 p-0">{{
+      !showForm ? "add" : "arrow_back"
+    }}</mat-icon>
+  </button>
+</div>
+<div *ngIf="!showForm">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Number Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
+    <!-- Tile Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.jobTitle }}</td>
+    </ng-container>
+
+    <!-- Company Column -->
+    <ng-container matColumnDef="tech">
+      <th mat-header-cell *matHeaderCellDef>Company</th>
+      <td mat-cell *matCellDef="let element">{{ element.company }}</td>
+    </ng-container>
+
+    <!-- Options Column -->
+    <ng-container matColumnDef="options">
+      <th mat-header-cell *matHeaderCellDef class="text-end">
+        <span class="me-2">Options</span>
+      </th>
+      <td mat-cell *matCellDef="let element" class="text-end">
+        <div class="d-flex gap-2 justify-content-end">
+          <button mat-button class="option-button">
+            <mat-icon class="m-0">delete</mat-icon>
+          </button>
+          <button
+            mat-button
+            class="option-button"
+            (click)="selectExperience(element)"
+          >
+            <mat-icon class="m-0">edit</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+<div class="w-100 mt-4" *ngIf="showForm">
+  <form [formGroup]="experienceForm" class="d-flex flex-column">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Best job" formControlName="jobTitle" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Company</mat-label>
+      <input matInput placeholder="Company.S.A." formControlName="company" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Website</mat-label>
+      <input matInput placeholder="Website.com" formControlName="link" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        placeholder="Some description..."
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+  </form>
+</div>
