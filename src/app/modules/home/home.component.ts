@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UserService } from './shared/services/user.service';
+import { ProjectsService } from './shared/services/project.service';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +13,13 @@ export class HomeComponent implements OnInit {
   documentHeight = 0;
 
   userService = inject(UserService);
+  projectsService = inject(ProjectsService);
 
   ngOnInit(): void {
     window.addEventListener('scroll', this.onWindowScroll.bind(this));
     this.onWindowScroll();
     this.userService.getUser().subscribe();
+    this.projectsService.getProjects().subscribe();
   }
 
   onWindowScroll() {
