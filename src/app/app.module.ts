@@ -14,6 +14,7 @@ import {
   AdminModule,
 } from './components';
 import { MaterialModule } from '@shared/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MaterialModule } from '@shared/material.module';
     FormsModule,
     AppRoutingModule,
     AdminModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
