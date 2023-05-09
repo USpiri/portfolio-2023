@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { UserService } from './shared/services/user.service';
 import { ProjectsService } from './shared/services/project.service';
 import { ExperiencesService } from './shared/services/experiences.service';
+import { SkillsService } from './shared/services/skills.service';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
   userService = inject(UserService);
   projectsService = inject(ProjectsService);
   experienceService = inject(ExperiencesService);
+  skillService = inject(SkillsService);
 
   ngOnInit(): void {
     window.addEventListener('scroll', this.onWindowScroll.bind(this));
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
     this.userService.getUser().subscribe();
     this.projectsService.getProjects().subscribe();
     this.experienceService.getExperiences().subscribe();
+    this.skillService.getSkills().subscribe();
   }
 
   onWindowScroll() {
