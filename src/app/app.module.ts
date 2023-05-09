@@ -15,6 +15,7 @@ import {
 } from './components';
 import { MaterialModule } from '@shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from '@shared/service/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     AdminModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

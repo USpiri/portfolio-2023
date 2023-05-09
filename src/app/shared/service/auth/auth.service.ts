@@ -32,6 +32,10 @@ export class AuthService {
     return this.storage.getItem(this.TOKEN) ?? '';
   }
 
+  isLoggedIn(): boolean {
+    return !!this.getJwtToken();
+  }
+
   isTokenExpired(): boolean {
     const expirationTime = this.storage.getItem(this.EXPIRATION);
     if (expirationTime === null) {
