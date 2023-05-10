@@ -14,13 +14,11 @@
         class="nav-item icon"
         (mouseout)="icon = 'lock'"
         (mouseover)="icon = 'lock_open'"
+        (click)="login()"
       >
-        <mat-icon
-          fontSet="material-icons-outlined"
-          class="mt-1"
-          (click)="login()"
-          >{{ icon }}</mat-icon
-        >
+        <mat-icon fontSet="material-icons-outlined" class="mt-1">{{
+          icon
+        }}</mat-icon>
       </div>
       <button mat-button mat-flat-button (click)="openSettings()">
         <mat-icon>settings</mat-icon>
