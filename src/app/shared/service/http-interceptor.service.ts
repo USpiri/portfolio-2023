@@ -18,6 +18,7 @@ export class HttpInterceptorService {
       });
       return next.handle(authRequest);
     } else {
+      this.authService.logout();
       return next.handle(request);
     }
   }
