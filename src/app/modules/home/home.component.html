@@ -1,13 +1,18 @@
 <app-code-background></app-code-background>
-<app-landing></app-landing>
-<app-about></app-about>
-<app-projects></app-projects>
-<app-experience></app-experience>
-<app-skills></app-skills>
-<app-blog></app-blog>
-<app-gallery-page></app-gallery-page>
-<app-contact></app-contact>
-<div class="controller me-3 mb-3 d-flex flex-column">
+<div class="w-100" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<div *ngIf="!loading">
+  <app-landing></app-landing>
+  <app-about></app-about>
+  <app-projects></app-projects>
+  <app-experience></app-experience>
+  <app-skills></app-skills>
+  <app-blog></app-blog>
+  <app-gallery-page></app-gallery-page>
+  <app-contact></app-contact>
+</div>
+<div class="controller me-3 mb-3 d-flex flex-column" *ngIf="!loading">
   <a
     color="primary"
     mat-raised-button

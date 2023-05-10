@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   exports: [
@@ -12,6 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatTooltipModule,
     MatDialogModule,
+    MatProgressBarModule,
   ],
 })
 export class MaterialModule {}
