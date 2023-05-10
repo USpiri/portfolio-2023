@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { LoginInputComponent } from './components';
+import { AuthService } from '@shared/service/auth/auth.service';
+import { LoginRequest } from 'src/app/models/login.interface';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +28,13 @@ export class LoginComponent implements OnInit {
   successView = false;
   username = '';
   password = '';
+  code = '';
 
   usernameTEST = 'Username';
   passwordTEST = '12345678';
 
   dialogRef = inject(MatDialogRef<LoginComponent>);
+  auth = inject(AuthService);
 
   async ngOnInit(): Promise<void> {
     await this.addLine(
@@ -43,7 +47,9 @@ export class LoginComponent implements OnInit {
     setTimeout(() => {
       try {
         this.userInput.setFocus();
-      } catch { /* empty */ }
+      } catch {
+        /* empty */
+      }
     }, 10);
   }
 
@@ -57,26 +63,33 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.usernameView = false;
     this.passwordView = false;
-    if (
-      this.username !== this.usernameTEST ||
-      this.password !== this.passwordTEST
-    ) {
-      this.errorView = true;
-      setTimeout(() => {
-        this.username = '';
-        this.password = '';
-        this.usernameView = true;
+    this.code = '';
+    this.errorView = false;
+    const login: LoginRequest = {
+      username: this.username,
+      password: this.password,
+    };
+    this.auth.login(login).subscribe({
+      next: () => {
+        this.errorView = false;
+        this.successView = true;
         setTimeout(() => {
-          this.userInput.setFocus();
-        }, 10);
-      }, 800);
-    } else {
-      this.errorView = false;
-      this.successView = true;
-      setTimeout(() => {
-        this.dialogRef.close();
-      }, 1200);
-    }
+          this.dialogRef.close();
+        }, 1200);
+      },
+      error: (err) => {
+        this.code = err.error.error;
+        this.errorView = true;
+        setTimeout(() => {
+          this.username = '';
+          this.password = '';
+          this.usernameView = true;
+          setTimeout(() => {
+            this.userInput.setFocus();
+          }, 10);
+        }, 1600);
+      },
+    });
   }
 
   get maskedPassword(): string {

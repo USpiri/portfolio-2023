@@ -2,5 +2,7 @@
   <span [ngClass]="type === 'success' ? 'success' : 'error'"
     >{{ type === "success" ? "Success!" : "Error:" }} </span
   >{{ showedMessage }}
+  <br />
+  <span class="error" *ngIf="isShowedCode">CODE: </span>{{ showedCode }}
 </p>
 <br />

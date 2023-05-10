@@ -2,7 +2,12 @@
 <div mat-dialog-content class="d-flex flex-column px-4 py-0 pt-3">
   <div class="console p-3" #console (click)="focusComponent()">
     <div #preconsole class="pre"></div>
-    <app-login-message type="error" class="w-100" *ngIf="errorView">
+    <app-login-message
+      type="error"
+      class="w-100"
+      *ngIf="errorView"
+      [(code)]="code"
+    >
     </app-login-message>
     <app-login-message type="success" class="w-100" *ngIf="successView">
     </app-login-message>

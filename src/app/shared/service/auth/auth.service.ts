@@ -20,7 +20,7 @@ export class AuthService {
 
   login(login: LoginRequest) {
     return this.http
-      .post<LoginResponse>(API, login, httpOptions)
+      .post<LoginResponse>(`${API}/login`, login, httpOptions)
       .pipe(tap((response) => this.doLoginUser(response.token)));
   }
 
