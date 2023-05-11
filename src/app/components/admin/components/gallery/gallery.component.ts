@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IMAGES } from '@assets/data/images.mock';
+import { Image } from '@models';
 
 @Component({
   selector: 'app-gallery',
@@ -7,7 +7,7 @@ import { IMAGES } from '@assets/data/images.mock';
   styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent {
-  images = IMAGES;
+  images: Image[] = [];
   fileName = '';
   imageSrc = '';
   uploadImage = false;

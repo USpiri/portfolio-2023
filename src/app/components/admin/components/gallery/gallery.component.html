@@ -7,25 +7,30 @@
   </button>
 </div>
 <div *ngIf="!uploadImage">
-  <div
-    class="d-flex gap-4 mb-3 categories w-100 justify-content-center unselectable"
-  >
-    <p class="selected">All</p>
-    <p class="">Nature</p>
-    <p class="">Portraits</p>
-    <p class="">Cinematography</p>
-  </div>
-  <div class="gallery">
-    <div class="mb-3 position-relative" *ngFor="let image of images">
-      <img [src]="image.imageSrc" width="100%" class="gallery-image" />
-      <button
-        mat-button
-        class="option-button position-absolute top-0 end-0 m-2"
-      >
-        <mat-icon class="d-flex align-items-center m-0 p-0">delete</mat-icon>
-      </button>
+  <div *ngIf="images.length > 0; else noImages">
+    <div
+      class="d-flex gap-4 mb-3 categories w-100 justify-content-center unselectable"
+    >
+      <p class="selected">All</p>
+      <p class="">Nature</p>
+      <p class="">Portraits</p>
+      <p class="">Cinematography</p>
+    </div>
+    <div class="gallery">
+      <div class="mb-3 position-relative" *ngFor="let image of images">
+        <img [src]="image.imageSrc" width="100%" class="gallery-image" />
+        <button
+          mat-button
+          class="option-button position-absolute top-0 end-0 m-2"
+        >
+          <mat-icon class="d-flex align-items-center m-0 p-0">delete</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
+  <ng-template #noImages>
+    <div class="text-center w-100">No images found</div>
+  </ng-template>
 </div>
 <div *ngIf="uploadImage">
   <div class="d-flex flex-column gap-3">
