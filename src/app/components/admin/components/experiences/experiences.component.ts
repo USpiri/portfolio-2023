@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EXPERIENCES } from '@assets/data/experience.mock';
 import { Experience } from '@models';
 import { ExperiencesService } from '@shared/service/user/experiences.service';
 
@@ -11,7 +10,7 @@ import { ExperiencesService } from '@shared/service/user/experiences.service';
 })
 export class ExperiencesComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'tech', 'options'];
-  experiences = EXPERIENCES;
+  experiences: Experience[] = [];
   fileName = '';
   showForm = false;
   experienceForm: FormGroup;
