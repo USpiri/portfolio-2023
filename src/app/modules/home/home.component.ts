@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { UserService } from './shared/services/user.service';
-import { ProjectsService } from './shared/services/project.service';
-import { ExperiencesService } from './shared/services/experiences.service';
-import { SkillsService } from './shared/services/skills.service';
+import { UserService } from '../../shared/service/user/user.service';
+import { ProjectsService } from '../../shared/service/user/project.service';
+import { ExperiencesService } from '../../shared/service/user/experiences.service';
+import { SkillsService } from '../../shared/service/user/skills.service';
 import { forkJoin } from 'rxjs';
 import { LoaderService } from '@shared/service/loader.service';
 

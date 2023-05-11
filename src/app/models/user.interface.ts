@@ -7,7 +7,7 @@ export interface User {
   phone: string;
   email: string;
   location: string;
-  image: string;
+  image?: Image;
   media: SocialMedia;
 }
 
@@ -16,4 +16,9 @@ export interface SocialMedia {
   github: string;
   linkedin: string;
   instagram: string;
+}
+
+export interface Image {
+  imageSrc: string;
+  thumbnailUrl: string;
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PROJECTS } from '@assets/data/project.mock';
 import { Project } from '@models';
-import { ProjectsService } from '@modules/home/shared/services/project.service';
+import { ProjectsService } from '@shared/service/user/project.service';
 
 @Component({
   selector: 'app-projects',

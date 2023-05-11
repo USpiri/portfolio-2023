@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SKILLS } from '@assets/data/skill.mock';
 import { Skill } from '@models';
-import { SkillsService } from '@modules/home/shared/services/skills.service';
+import { SkillsService } from '@shared/service/user/skills.service';
 
 @Component({
   selector: 'app-skills',

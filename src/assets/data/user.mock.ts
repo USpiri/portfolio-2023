@@ -8,6 +8,5 @@ export const USER: User = {
   phone: '',
   email: '',
   location: '',
-  image: '',
   media: { instagram: '', twitter: '', linkedin: '', github: '' },
 };

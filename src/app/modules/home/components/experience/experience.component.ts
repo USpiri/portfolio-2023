@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { EXPERIENCES } from '@assets/data/experience.mock';
 import { Experience } from '@models';
-import { ExperiencesService } from '@modules/home/shared/services/experiences.service';
+import { ExperiencesService } from '@shared/service/user/experiences.service';
 
 @Component({
   selector: 'app-experience',

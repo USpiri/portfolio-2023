@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { USER } from '@assets/data/user.mock';
 import { User } from '@models';
-import { UserService } from '@modules/home/shared/services/user.service';
+import { UserService } from '@shared/service/user/user.service';
 
 @Component({
   selector: 'app-about',

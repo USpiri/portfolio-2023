@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PROJECTS } from '@assets/data/project.mock';
 import { Project } from '@models';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -10,22 +10,26 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ProjectsService } from '@shared/service/user/project.service';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   displayedColumns: string[] = ['position', 'name', 'tech', 'options'];
-  dataSource = PROJECTS;
+  projects = PROJECTS;
   fileName = '';
   showForm = false;
   projectForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private projectService: ProjectsService
+  ) {
     this.projectForm = this.fb.group({
       _id: [''],
       title: ['', Validators.required],
@@ -36,6 +40,11 @@ export class ProjectsComponent {
       link: ['', Validators.required],
       image: [''],
     });
+  }
+  ngOnInit(): void {
+    this.projectService.projects$.subscribe(
+      (projects) => (this.projects = projects)
+    );
   }
 
   selectProject(project: Project) {

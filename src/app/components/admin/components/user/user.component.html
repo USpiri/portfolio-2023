@@ -44,7 +44,7 @@
         <mat-card class="preview">
           <mat-card-content>
             <img
-              [src]="user.image"
+              [src]="user.image?.imageSrc"
               class="preview-image"
               alt="{{ user.name }}"
               title="{{ user.name }}"

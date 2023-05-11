@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { USER } from '@assets/data/user.mock';
 import { SocialMedia } from '@models';
-import { UserService } from '@modules/home/shared/services/user.service';
+import { UserService } from '@shared/service/user/user.service';
 
 @Component({
   selector: 'app-contact',
