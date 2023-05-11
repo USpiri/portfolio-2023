@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PROJECTS } from '@assets/data/project.mock';
 import { Project } from '@models';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
@@ -21,7 +20,7 @@ export class ProjectsComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   displayedColumns: string[] = ['position', 'name', 'tech', 'options'];
-  projects = PROJECTS;
+  projects: Project[] = [];
   fileName = '';
   showForm = false;
   projectForm: FormGroup;
