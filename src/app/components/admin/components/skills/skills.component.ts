@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SKILLS } from '@assets/data/skill.mock';
 import { Skill } from '@models';
 import { SkillsService } from '@shared/service/user/skills.service';
 
@@ -11,7 +10,7 @@ import { SkillsService } from '@shared/service/user/skills.service';
 })
 export class SkillsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'tech', 'options'];
-  skills = SKILLS;
+  skills: Skill[] = [];
   fileName = '';
   showForm = false;
   skillsForm: FormGroup;
