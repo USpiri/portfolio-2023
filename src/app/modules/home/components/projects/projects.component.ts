@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PROJECTS } from '@assets/data/project.mock';
 import { Project } from '@models';
 import { ProjectsService } from '@shared/service/user/project.service';
 
@@ -9,7 +8,7 @@ import { ProjectsService } from '@shared/service/user/project.service';
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent {
-  projects: Project[] = PROJECTS;
+  projects: Project[] = [];
   constructor(private projectsService: ProjectsService) {
     this.projectsService.projects$.subscribe(
       (projects) => (this.projects = projects)

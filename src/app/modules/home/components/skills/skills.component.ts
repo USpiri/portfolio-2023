@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { SKILLS } from '@assets/data/skill.mock';
 import { Skill } from '@models';
 import { SkillsService } from '@shared/service/user/skills.service';
 
@@ -9,7 +8,7 @@ import { SkillsService } from '@shared/service/user/skills.service';
   styleUrls: ['./skills.component.scss'],
 })
 export class SkillsComponent {
-  skills: Skill[] = SKILLS;
+  skills: Skill[] = [];
   constructor(private skillService: SkillsService) {
     this.skillService.skills$.subscribe((skills) => (this.skills = skills));
   }

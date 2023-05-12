@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SKILLS } from '@assets/data/skill.mock';
 import { environment } from '@environments/environment';
 import { Skill } from '@models';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
@@ -13,7 +12,7 @@ const API = `${environment.API}/skill`;
   providedIn: 'root',
 })
 export class SkillsService {
-  private skillsSubject = new BehaviorSubject<Skill[]>(SKILLS);
+  private skillsSubject = new BehaviorSubject<Skill[]>([]);
   public skills$ = this.skillsSubject.asObservable();
 
   constructor(private http: HttpClient) {}

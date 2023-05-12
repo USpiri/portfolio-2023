@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EXPERIENCES } from '@assets/data/experience.mock';
 import { environment } from '@environments/environment';
 import { Experience } from '@models';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
@@ -13,7 +12,7 @@ const API = `${environment.API}/experience`;
   providedIn: 'root',
 })
 export class ExperiencesService {
-  private experiencesSubject = new BehaviorSubject<Experience[]>(EXPERIENCES);
+  private experiencesSubject = new BehaviorSubject<Experience[]>([]);
   public experiences$ = this.experiencesSubject.asObservable();
 
   constructor(private http: HttpClient) {}

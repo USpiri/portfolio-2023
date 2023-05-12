@@ -1,6 +1,5 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PROJECTS } from '@assets/data/project.mock';
 import { environment } from '@environments/environment';
 import { Project } from '@models';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
@@ -13,7 +12,7 @@ const API = `${environment.API}/project`;
   providedIn: 'root',
 })
 export class ProjectsService {
-  private projectsSubject = new BehaviorSubject<Project[]>(PROJECTS);
+  private projectsSubject = new BehaviorSubject<Project[]>([]);
   public projects$ = this.projectsSubject.asObservable();
 
   constructor(private http: HttpClient) {}

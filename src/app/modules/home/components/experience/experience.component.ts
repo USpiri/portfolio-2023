@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { EXPERIENCES } from '@assets/data/experience.mock';
 import { Experience } from '@models';
 import { ExperiencesService } from '@shared/service/user/experiences.service';
 
@@ -9,7 +8,7 @@ import { ExperiencesService } from '@shared/service/user/experiences.service';
   styleUrls: ['./experience.component.scss'],
 })
 export class ExperienceComponent {
-  experiences: Experience[] = EXPERIENCES;
+  experiences: Experience[] = [];
   constructor(private experienceService: ExperiencesService) {
     this.experienceService.experiences$.subscribe(
       (experiences) => (this.experiences = experiences)
