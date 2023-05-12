@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   windowHeight = 0;
   documentHeight = 0;
   loading = true;
+  errorView = false;
 
   userService = inject(UserService);
   projectsService = inject(ProjectsService);
@@ -32,11 +33,18 @@ export class HomeComponent implements OnInit {
       this.projectsService.getProjects(),
       this.experienceService.getExperiences(),
       this.skillService.getSkills(),
-    ]).subscribe(() => {
-      this.loader.displayLoader(false);
-      setTimeout(() => {
-        this.onWindowScroll();
-      }, 11);
+    ]).subscribe({
+      next: () => {
+        this.loader.displayLoader(false);
+        setTimeout(() => {
+          this.onWindowScroll();
+        }, 11);
+        this.errorView = false;
+      },
+      error: () => {
+        this.loader.displayLoader(false);
+        this.errorView = true;
+      },
     });
   }
 

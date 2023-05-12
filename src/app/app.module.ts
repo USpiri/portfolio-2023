@@ -16,6 +16,7 @@ import {
 import { MaterialModule } from '@shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from '@shared/service/http-interceptor.service';
+import { LoaderComponent } from '@shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { httpInterceptorProviders } from '@shared/service/http-interceptor.servi
     LoginComponent,
     LoginInputComponent,
     LoginMessageComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

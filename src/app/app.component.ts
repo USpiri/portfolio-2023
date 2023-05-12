@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@shared/service/auth/auth.service';
+import { LoaderService } from '@shared/service/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,9 @@ import { AuthService } from '@shared/service/auth/auth.service';
 })
 export class AppComponent {
   title = 'portfolio';
-  constructor(private authService: AuthService) {
+  loading = true;
+  constructor(private authService: AuthService, private loader: LoaderService) {
+    this.loader.loading$.subscribe((state) => (this.loading = state));
     if (this.authService.isLoggedIn()) {
       this.authService.logout();
     }

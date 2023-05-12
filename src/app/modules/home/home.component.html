@@ -1,8 +1,5 @@
 <app-code-background></app-code-background>
-<div class="w-100" *ngIf="loading">
-  <app-loader></app-loader>
-</div>
-<div *ngIf="!loading">
+<div *ngIf="!loading && !errorView">
   <app-landing></app-landing>
   <app-about></app-about>
   <app-projects></app-projects>
@@ -12,7 +9,13 @@
   <app-gallery-page></app-gallery-page>
   <app-contact></app-contact>
 </div>
-<div class="controller me-3 mb-3 d-flex flex-column" *ngIf="!loading">
+<div *ngIf="!loading && errorView">
+  <app-server-error></app-server-error>
+</div>
+<div
+  class="controller me-3 mb-3 d-flex flex-column"
+  *ngIf="!loading && !errorView"
+>
   <a
     color="primary"
     mat-raised-button

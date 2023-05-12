@@ -19,7 +19,7 @@ import { ProjectComponent } from './components/projects/components/project/proje
 import { ProjectModalComponent } from './components/projects/components/project-modal/project-modal.component';
 import { ExperienceCardComponent } from './components/experience/components/experience-card/experience-card.component';
 import { BlogCardComponent } from './components/blog/components/blog-card/blog-card.component';
-import { LoaderComponent } from '@shared/components/loader/loader.component';
+import { ComponentsModule } from '@shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,6 @@ import { LoaderComponent } from '@shared/components/loader/loader.component';
     ExperienceCardComponent,
     BlogCardComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, MaterialModule, LoaderComponent],
+  imports: [CommonModule, HomeRoutingModule, MaterialModule, ComponentsModule],
 })
 export class HomeModule {}
