@@ -20,9 +20,21 @@
           icon
         }}</mat-icon>
       </div>
-      <button mat-button mat-flat-button (click)="openSettings()">
-        <mat-icon>settings</mat-icon>
-      </button>
+      <div *ngIf="isLoggedIn">
+        <button
+          mat-button
+          mat-flat-button
+          color="primary"
+          (click)="openSettings()"
+          class="rotate-button"
+        >
+          <mat-icon
+            class="m-0 me-2 admin-icon d-flex align-items-center justify-content-center"
+            >settings</mat-icon
+          >
+          <p>Admin Panel</p>
+        </button>
+      </div>
     </div>
   </div>
 </mat-toolbar>

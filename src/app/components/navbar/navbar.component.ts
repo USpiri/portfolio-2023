@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login';
 import { AdminComponent } from '../admin/admin.component';
+import { AuthService } from '@shared/service/auth/auth.service';
 
 export interface NavItems {
   label: string;
@@ -14,7 +15,7 @@ export interface NavItems {
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   icon = 'lock';
   navbarItems: NavItems[] = [
     { label: 'About', route: 'about' },
@@ -25,8 +26,15 @@ export class NavbarComponent {
     { label: 'Gallery', route: 'gallery' },
     { label: 'Contact', route: 'contact' },
   ];
+  isLoggedIn = false;
+
   dialog = inject(MatDialog);
   router = inject(Router);
+  auth = inject(AuthService);
+
+  ngOnInit(): void {
+    this.auth.isLoggedIn$.subscribe((state) => (this.isLoggedIn = state));
+  }
 
   focusComponent(componentName: string) {
     const element = document.getElementById(componentName);

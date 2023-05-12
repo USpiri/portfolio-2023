@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { StorageService } from './storage.service';
 import { LoginRequest, LoginResponse } from 'src/app/models/login.interface';
-import { tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -16,16 +16,29 @@ export class AuthService {
   private readonly TOKEN = 'TOKEN';
   private readonly EXPIRATION = 'EXPIRATION_TIME';
 
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
+  // displayLoader(state: boolean) {
+  //   this.loaderSubject.next(state);
+  // }
+
   constructor(private http: HttpClient, private storage: StorageService) {}
 
   login(login: LoginRequest) {
     return this.http
       .post<LoginResponse>(`${API}/login`, login, httpOptions)
-      .pipe(tap((response) => this.doLoginUser(response.token)));
+      .pipe(
+        tap((response) => {
+          this.doLoginUser(response.token);
+          this.isLoggedInSubject.next(true);
+        })
+      );
   }
 
   logout(): void {
     this.doLogoutUser();
+    this.isLoggedInSubject.next(false);
   }
 
   getJwtToken(): string {
