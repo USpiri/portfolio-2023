@@ -4,6 +4,9 @@
 }
 .category {
   color: var(--bg-lighter-30);
+  p {
+    cursor: pointer;
+  }
 }
 .selected {
   color: white;

@@ -6,11 +6,14 @@
     *ngIf="images.length > 0; else noImages"
     class="d-flex flex-column align-items-center justify-content-center"
   >
-    <div class="d-flex gap-4 mb-5 category">
-      <p class="selected">All</p>
-      <p class="">Nature</p>
-      <p class="">Portraits</p>
-      <p class="">Cinematography</p>
+    <div class="d-flex gap-4 mb-5 category unselectable">
+      <p
+        [ngClass]="{ selected: selectedCategory === category }"
+        *ngFor="let category of categories"
+        (click)="selectCategory(category)"
+      >
+        {{ category }}
+      </p>
     </div>
     <div class="container-fluid w-75">
       <div class="gallery">

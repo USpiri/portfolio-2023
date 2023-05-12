@@ -11,12 +11,15 @@ import { Image } from '@models';
   styleUrls: ['./gallery.component.scss'],
 })
 export class GalleryComponent implements OnInit {
+  categories = ['All', 'Nature', 'Portrait', 'Cinematography'];
+  selectedCategory = 'All';
   images: Image[] = [];
+  loading = true;
+  errorView = false;
+
   dialog: MatDialog = inject(MatDialog);
   loader = inject(LoaderService);
   gallery = inject(GalleryService);
-  loading = true;
-  errorView = false;
 
   ngOnInit(): void {
     this.loader.loading$.subscribe((state) => (this.loading = state));
@@ -35,6 +38,27 @@ export class GalleryComponent implements OnInit {
   openImage(image: Image) {
     this.dialog.open(ImageDialogComponent, {
       data: image,
+    });
+  }
+  selectCategory(category: string) {
+    if (category === this.selectedCategory) return;
+    this.loader.displayLoader(true);
+    this.selectedCategory = category;
+    if (category === 'Cinematography') {
+      this.selectedCategory = 'All';
+    }
+    const type = this.selectedCategory !== 'All' ? category.toUpperCase() : '';
+    this.gallery.getImages(type).subscribe({
+      next: (images) => {
+        this.images = images;
+        this.loader.displayLoader(false);
+        this.errorView = false;
+      },
+      error: () => {
+        this.images = [];
+        this.loader.displayLoader(false);
+        this.errorView = true;
+      },
     });
   }
 }
