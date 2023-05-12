@@ -1,9 +1,6 @@
 .sticky-content {
   z-index: 50;
 }
-.projects-container {
-  min-height: calc(100vh - 64px);
-}
 .project-card:nth-child(odd) {
   transform: translateY(-35px);
 }
