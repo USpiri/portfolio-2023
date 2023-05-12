@@ -2,21 +2,32 @@
   <div class="mt-4 mb-4">
     <h1>Gallery</h1>
   </div>
-  <div class="d-flex gap-4 mb-5 category">
-    <p class="selected">All</p>
-    <p class="">Nature</p>
-    <p class="">Portraits</p>
-    <p class="">Cinematography</p>
-  </div>
-  <div class="container-fluid w-75">
-    <div class="gallery">
-      <div class="col mb-3" *ngFor="let image of images">
-        <app-image
-          [src]="image"
-          width="250px"
-          (imageClick)="openImage(image)"
-        ></app-image>
+  <div
+    *ngIf="images.length > 0; else noImages"
+    class="d-flex flex-column align-items-center justify-content-center"
+  >
+    <div class="d-flex gap-4 mb-5 category">
+      <p class="selected">All</p>
+      <p class="">Nature</p>
+      <p class="">Portraits</p>
+      <p class="">Cinematography</p>
+    </div>
+    <div class="container-fluid w-75">
+      <div class="gallery">
+        <div class="col mb-3" *ngFor="let image of images">
+          <app-image
+            [src]="image.imageSrc"
+            width="250px"
+            (imageClick)="openImage(image)"
+          ></app-image>
+        </div>
       </div>
     </div>
   </div>
+  <ng-template #noImages>
+    <div class="text-center w-100">No images found</div>
+  </ng-template>
+</div>
+<div *ngIf="!loading && errorView">
+  <app-server-error></app-server-error>
 </div>

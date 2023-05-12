@@ -1,29 +1,38 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageDialogComponent } from './components';
+import { LoaderService } from '@shared/service/loader.service';
+import { GalleryService } from '@shared/service/gallery/gallery.service';
+import { Image } from '@models';
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
 })
-export class GalleryComponent {
-  images: string[] = [
-    '../../../assets/images/gallery/1.jpg',
-    '../../../assets/images/gallery/2.jpg',
-    '../../../assets/images/gallery/5.jpg',
-    '../../../assets/images/gallery/3.jpg',
-    '../../../assets/images/gallery/4.jpg',
-    '../../../assets/images/gallery/6.jpg',
-    '../../../assets/images/gallery/7.jpg',
-    '../../../assets/images/gallery/8.jpg',
-    '../../../assets/images/gallery/10.jpg',
-  ];
-  dialog:MatDialog = inject(MatDialog)
+export class GalleryComponent implements OnInit {
+  images: Image[] = [];
+  dialog: MatDialog = inject(MatDialog);
+  loader = inject(LoaderService);
+  gallery = inject(GalleryService);
+  loading = true;
+  errorView = false;
 
-  openImage(image: string) {
-    console.log('OPEN');
-
+  ngOnInit(): void {
+    this.loader.loading$.subscribe((state) => (this.loading = state));
+    this.gallery.getImages().subscribe({
+      next: (images) => {
+        this.images = images;
+        this.loader.displayLoader(false);
+        this.errorView = false;
+      },
+      error: () => {
+        this.loader.displayLoader(false);
+        this.errorView = true;
+      },
+    });
+  }
+  openImage(image: Image) {
     this.dialog.open(ImageDialogComponent, {
       data: image,
     });
