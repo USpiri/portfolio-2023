@@ -17,6 +17,7 @@ import { MaterialModule } from '@shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from '@shared/service/http-interceptor.service';
 import { LoaderComponent } from '@shared/components/loader/loader.component';
+import { PipesModule } from '@shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LoaderComponent } from '@shared/components/loader/loader.component';
     AppRoutingModule,
     AdminModule,
     HttpClientModule,
+    PipesModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

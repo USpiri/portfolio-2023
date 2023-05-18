@@ -11,6 +11,7 @@ import {
 import { MaterialModule } from './shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MediaComponent } from './components/media/media.component';
+import { PipesModule } from '@shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,13 @@ import { MediaComponent } from './components/media/media.component';
     UserComponent,
     MediaComponent,
   ],
-  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PipesModule,
+  ],
   exports: [AdminComponent],
 })
 export class AdminModule {}
