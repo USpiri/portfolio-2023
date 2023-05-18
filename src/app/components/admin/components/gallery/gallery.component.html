@@ -58,7 +58,7 @@
         <div *ngIf="fileName" class="delete-file" (click)="clear()">
           <mat-icon>close</mat-icon>
         </div>
-        {{ fileName }}
+        {{ fileName | truncate }}
       </div>
       <div class="d-flex">
         <mat-card class="preview">
