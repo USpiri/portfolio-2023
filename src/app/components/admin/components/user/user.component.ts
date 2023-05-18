@@ -12,6 +12,7 @@ import { UserService } from '@shared/service/user/user.service';
 export class UserComponent implements OnInit {
   user: User = USER;
   fileName = '';
+  imageSrc = '';
   userForm: FormGroup;
 
   constructor(private fb: FormBuilder, private userService: UserService) {
@@ -30,6 +31,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.userService.user$.subscribe((user) => (this.user = user));
     this.userForm.patchValue(this.user);
+    this.imageSrc = this.user.image?.imageSrc ?? '';
     const description = this.userForm.get('description')?.value.join('\n');
     this.userForm.get('description')?.setValue(description);
   }
@@ -40,7 +42,17 @@ export class UserComponent implements OnInit {
     if (ev.files?.[0]) {
       file = ev.files?.[0];
       this.fileName = file.name;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+      };
+      reader.readAsDataURL(file);
       return;
     }
+  }
+
+  clear() {
+    this.fileName = '';
+    this.imageSrc = this.user.image?.imageSrc ?? '';
   }
 }
