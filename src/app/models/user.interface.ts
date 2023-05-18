@@ -21,7 +21,7 @@ export interface SocialMedia {
 export interface Image {
   imageSrc: string;
   thumbnailUrl: string;
-  type: ImageType;
+  type?: ImageType;
 }
 
 export type ImageType = 'NATURE' | 'PORTRAIT';

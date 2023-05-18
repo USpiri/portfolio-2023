@@ -16,7 +16,6 @@ export class ProjectComponent {
     longDescription: '',
     github: '',
     link: '',
-    image: '',
   };
 
   dialog: MatDialog = inject(MatDialog);

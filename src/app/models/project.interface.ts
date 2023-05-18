@@ -1,3 +1,5 @@
+import { Image } from './user.interface';
+
 export interface Project {
   _id?: string;
   title: string;
@@ -6,5 +8,5 @@ export interface Project {
   longDescription: string;
   github: string;
   link: string;
-  image: string; // url
+  image?: Image;
 }
