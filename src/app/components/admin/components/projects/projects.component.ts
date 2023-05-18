@@ -17,7 +17,6 @@ import { ProjectsService } from '@shared/service/user/project.service';
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent implements OnInit {
-  addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   displayedColumns: string[] = ['position', 'name', 'tech', 'options'];
   projects: Project[] = [];
