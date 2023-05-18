@@ -29,6 +29,7 @@ export class GalleryComponent {
 
   toggleUpload() {
     this.uploadImage = !this.uploadImage;
+    this.clear();
   }
 
   clear() {
