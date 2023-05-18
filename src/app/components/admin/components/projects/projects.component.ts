@@ -22,7 +22,9 @@ export class ProjectsComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'tech', 'options'];
   projects: Project[] = [];
   fileName = '';
+  imageSrc = '';
   showForm = false;
+  updateProject = false;
   projectForm: FormGroup;
 
   constructor(
@@ -37,7 +39,6 @@ export class ProjectsComponent implements OnInit {
       longDescription: ['', Validators.required],
       github: ['', Validators.required],
       link: ['', Validators.required],
-      image: [''],
     });
   }
   ngOnInit(): void {
@@ -48,12 +49,16 @@ export class ProjectsComponent implements OnInit {
 
   selectProject(project: Project) {
     this.projectForm.patchValue(project);
+    this.imageSrc = project.image?.thumbnailUrl ?? '';
     this.showForm = true;
+    this.updateProject = true;
   }
 
   toggleUpload() {
     this.showForm = !this.showForm;
     this.projectForm.reset();
+    this.clear();
+    this.updateProject = false;
   }
 
   add(event: MatChipInputEvent): void {
@@ -94,7 +99,17 @@ export class ProjectsComponent implements OnInit {
     if (ev.files?.[0]) {
       file = ev.files?.[0];
       this.fileName = file.name;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+      };
+      reader.readAsDataURL(file);
       return;
     }
+  }
+
+  clear() {
+    this.fileName = '';
+    this.imageSrc = '';
   }
 }

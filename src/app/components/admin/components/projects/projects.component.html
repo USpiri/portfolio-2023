@@ -120,15 +120,19 @@
               color="primary"
               class="me-2"
               (click)="fileInput.click()"
+              type="button"
             >
-              <mat-icon>attach_file</mat-icon> Change image
+              <mat-icon>attach_file</mat-icon>
+              {{ showForm && imageSrc ? "Change" : "Upload" }} image
             </button>
-          </div>
-          <div class="d-flex gap-2 align-items-center">
-            <div *ngIf="fileName" class="delete-file d-flex align-items-center">
-              <mat-icon>close</mat-icon>
-            </div>
-            {{ fileName }}
+            <button
+              mat-flat-button
+              color="primary"
+              class="me-2"
+              *ngIf="imageSrc && updateProject"
+            >
+              <mat-icon>publish</mat-icon> Upload image
+            </button>
           </div>
         </div>
         <input
@@ -138,17 +142,28 @@
           (change)="onFileSelected($event)"
         />
       </div>
-      <div class="d-flex">
-        <mat-card class="preview">
-          <mat-card-content>
-            <img
-              [src]="projectForm.get('image')!.value"
-              class="about-image"
-              alt="{{ projectForm.get('title')!.value }} image"
-              title="Profile image"
-            />
-          </mat-card-content>
-        </mat-card>
+      <div class="d-flex gap-3 flex-row" *ngIf="imageSrc">
+        <div class="d-flex">
+          <mat-card class="preview">
+            <mat-card-content>
+              <img
+                [src]="imageSrc"
+                class="preview-image"
+                alt="{{ fileName }}"
+                title="{{ fileName }}"
+                width="50%"
+              />
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="d-flex gap-2 justify-content-start">
+          <div>
+            <div *ngIf="fileName" class="delete-file" (click)="clear()">
+              <mat-icon>close</mat-icon>
+            </div>
+          </div>
+          {{ fileName | truncate }}
+        </div>
       </div>
     </div>
   </form>
