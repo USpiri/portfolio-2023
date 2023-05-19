@@ -17,4 +17,14 @@ export class GalleryService {
   getImages(type = ''): Observable<Image[]> {
     return this.http.get<Image[]>(`${API}/${type}`, httpOptions);
   }
+
+  uploadImage(image: File, type = ''): Observable<Image> {
+    const formData: FormData = new FormData();
+    formData.append('image', image, image.name);
+    return this.http.put<Image>(`${API}/${type}`, formData, httpOptions);
+  }
+
+  deleteSkill(id: string) {
+    return this.http.delete<void>(`${API}/${id}`, httpOptions);
+  }
 }

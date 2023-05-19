@@ -22,4 +22,39 @@ export class SkillsService {
       .get<Skill[]>(`${API}`, httpOptions)
       .pipe(tap((skills) => this.skillsSubject.next(skills)));
   }
+
+  createSkill(skill: Skill): Observable<Skill> {
+    return this.http.post<Skill>(`${API}`, skill, httpOptions).pipe(
+      tap((skill) => {
+        const currentSkills = this.skillsSubject.getValue();
+        const updatedSkills = [...currentSkills, skill];
+        this.skillsSubject.next(updatedSkills);
+      })
+    );
+  }
+
+  updateSkill(skill: Skill): Observable<Skill> {
+    return this.http.put<Skill>(`${API}/${skill._id}`, skill, httpOptions).pipe(
+      tap((skill) => {
+        const currentSkills = this.skillsSubject.getValue();
+        const updatedSkills = currentSkills.map((s) => {
+          if (s._id === skill._id) {
+            return skill;
+          }
+          return s;
+        });
+        this.skillsSubject.next(updatedSkills);
+      })
+    );
+  }
+
+  deleteSkill(id: string) {
+    return this.http.delete<void>(`${API}/${id}`, httpOptions).pipe(
+      tap(() => {
+        const currentSkills = this.skillsSubject.getValue();
+        const updatedSkills = currentSkills.filter((s) => s._id !== id);
+        this.skillsSubject.next(updatedSkills);
+      })
+    );
+  }
 }

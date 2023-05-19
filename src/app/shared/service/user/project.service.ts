@@ -22,4 +22,60 @@ export class ProjectsService {
       .get<Project[]>(`${API}`, httpOptions)
       .pipe(tap((project) => this.projectsSubject.next(project)));
   }
+
+  createProject(project: Project): Observable<Project> {
+    return this.http.post<Project>(`${API}`, project, httpOptions).pipe(
+      tap((project) => {
+        const currentProjects = this.projectsSubject.getValue();
+        const updatedProjects = [...currentProjects, project];
+        this.projectsSubject.next(updatedProjects);
+      })
+    );
+  }
+
+  updateProject(project: Project): Observable<Project> {
+    return this.http
+      .put<Project>(`${API}/${project._id}`, project, httpOptions)
+      .pipe(
+        tap((project) => {
+          const currentProjects = this.projectsSubject.getValue();
+          const updatedProjects = currentProjects.map((p) => {
+            if (p._id === project._id) {
+              return project;
+            }
+            return p;
+          });
+          this.projectsSubject.next(updatedProjects);
+        })
+      );
+  }
+
+  uploadImage(image: File, id: string): Observable<Project> {
+    const formData: FormData = new FormData();
+    formData.append('project-image', image, image.name);
+    return this.http
+      .put<Project>(`${API}/image/${id}`, formData, httpOptions)
+      .pipe(
+        tap((project) => {
+          const currentProjects = this.projectsSubject.getValue();
+          const updatedProjects = currentProjects.map((p) => {
+            if (p._id === project._id) {
+              return project;
+            }
+            return p;
+          });
+          this.projectsSubject.next(updatedProjects);
+        })
+      );
+  }
+
+  deleteProject(id: string) {
+    return this.http.delete<void>(`${API}/${id}`, httpOptions).pipe(
+      tap(() => {
+        const currentProjects = this.projectsSubject.getValue();
+        const updatedProjects = currentProjects.filter((p) => p._id !== id);
+        this.projectsSubject.next(updatedProjects);
+      })
+    );
+  }
 }

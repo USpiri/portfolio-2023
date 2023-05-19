@@ -22,4 +22,43 @@ export class ExperiencesService {
       .get<Experience[]>(`${API}`, httpOptions)
       .pipe(tap((experience) => this.experiencesSubject.next(experience)));
   }
+
+  createExperience(experience: Experience): Observable<Experience> {
+    return this.http.post<Experience>(`${API}`, experience, httpOptions).pipe(
+      tap((experience) => {
+        const currentExperiences = this.experiencesSubject.getValue();
+        const updatedExperiences = [...currentExperiences, experience];
+        this.experiencesSubject.next(updatedExperiences);
+      })
+    );
+  }
+
+  updateExperience(experience: Experience): Observable<Experience> {
+    return this.http
+      .put<Experience>(`${API}/${experience._id}`, experience, httpOptions)
+      .pipe(
+        tap((experience) => {
+          const currentExperiences = this.experiencesSubject.getValue();
+          const updatedExperiences = currentExperiences.map((e) => {
+            if (e._id === experience._id) {
+              return experience;
+            }
+            return e;
+          });
+          this.experiencesSubject.next(updatedExperiences);
+        })
+      );
+  }
+
+  deleteExperience(id: string) {
+    return this.http.delete<void>(`${API}/${id}`, httpOptions).pipe(
+      tap(() => {
+        const currentExperiences = this.experiencesSubject.getValue();
+        const updatedExperiences = currentExperiences.filter(
+          (e) => e._id !== id
+        );
+        this.experiencesSubject.next(updatedExperiences);
+      })
+    );
+  }
 }

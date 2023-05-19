@@ -23,4 +23,18 @@ export class UserService {
       .get<User>(`${API}/${environment.USER_ID}`, httpOptions)
       .pipe(tap((user) => this.userSubject.next(user)));
   }
+
+  updateUser(user: User): Observable<User> {
+    return this.http
+      .put<User>(`${API}/${environment.USER_ID}`, user, httpOptions)
+      .pipe(tap((user) => this.userSubject.next(user)));
+  }
+
+  uploadImage(image: File): Observable<User> {
+    const formData: FormData = new FormData();
+    formData.append('profile-image', image, image.name);
+    return this.http
+      .put<User>(`${API}/image/${environment.USER_ID}`, formData, httpOptions)
+      .pipe(tap((user) => this.userSubject.next(user)));
+  }
 }
