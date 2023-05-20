@@ -12,10 +12,6 @@ const routes: Routes = [
     path: 'gallery',
     loadChildren: () => import('./modules').then((m) => m.GalleryModule),
   },
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./modules').then((m) => m.DashboardModule),
-  },
   { path: '**', redirectTo: '' },
 ];
 
