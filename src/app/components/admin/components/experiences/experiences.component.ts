@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Experience } from '@models';
 import { ExperiencesService } from '@shared/service/user/experiences.service';
 import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-experiences',
@@ -76,45 +77,33 @@ export class ExperiencesComponent implements OnInit {
         ...this.selectedExperience,
         ...this.experienceForm.value,
       };
-      if (this.update) {
-        this.experienceService.updateExperience(newExperience).subscribe({
-          next: () => {
-            this.snackBar.open('Experience updated successfully', undefined, {
+      const observable = this.update
+        ? this.experienceService.updateExperience(newExperience)
+        : this.experienceService.createExperience(newExperience);
+      observable.pipe(finalize(() => this.toggleUpload())).subscribe({
+        next: () => {
+          this.snackBar.open(
+            `Experience ${this.update ? 'updated' : 'added'} successfully`,
+            undefined,
+            {
               duration: 2000,
-            });
-            this.toggleUpload();
-          },
-          error: (err) => {
-            this.snackBar.open(
-              `Error updating experience: ${err.error.error}`,
-              undefined,
-              {
-                duration: 2000,
-              }
-            );
-            this.toggleUpload();
-          },
-        });
-      } else {
-        this.experienceService.createExperience(newExperience).subscribe({
-          next: () => {
-            this.snackBar.open('Experience added successfully', undefined, {
+            }
+          );
+          this.toggleUpload();
+        },
+        error: (err) => {
+          this.snackBar.open(
+            `Error ${this.update ? 'updating' : 'adding'} experience: ${
+              err.error.error
+            }`,
+            undefined,
+            {
               duration: 2000,
-            });
-            this.toggleUpload();
-          },
-          error: (err) => {
-            this.snackBar.open(
-              `Error adding experience: ${err.error.error}`,
-              undefined,
-              {
-                duration: 2000,
-              }
-            );
-            this.toggleUpload();
-          },
-        });
-      }
+            }
+          );
+          this.toggleUpload();
+        },
+      });
     } else {
       Object.values(this.experienceForm.controls).forEach((control) => {
         control.markAsTouched();
