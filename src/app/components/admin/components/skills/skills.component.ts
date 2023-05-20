@@ -77,6 +77,7 @@ export class SkillsComponent implements OnInit {
       ...this.skillsForm.value,
     };
     if (!this.showForm) {
+      this.loader.displayLoader(false);
       return;
     }
     if (!this.skillsForm.valid) {

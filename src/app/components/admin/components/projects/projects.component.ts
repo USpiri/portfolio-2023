@@ -141,6 +141,7 @@ export class ProjectsComponent implements OnInit {
       ...this.projectForm.value,
     };
     if (!this.showForm) {
+      this.loader.displayLoader(false);
       return;
     }
     if (!this.projectForm.valid) {

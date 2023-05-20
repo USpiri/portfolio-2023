@@ -106,6 +106,7 @@ export class ExperiencesComponent implements OnInit {
       Object.values(this.experienceForm.controls).forEach((control) => {
         control.markAsTouched();
       });
+      this.loader.displayLoader(false);
     }
   }
 
