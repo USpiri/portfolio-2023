@@ -50,17 +50,18 @@ export class GalleryComponent implements OnInit {
       this.selectedCategory = 'All';
     }
     const type = this.selectedCategory !== 'All' ? category.toUpperCase() : '';
-    this.gallery.getImages(type).subscribe({
-      next: (images) => {
-        this.images = images;
-        this.loader.displayLoader(false);
-        this.errorView = false;
-      },
-      error: () => {
-        this.images = [];
-        this.loader.displayLoader(false);
-        this.errorView = true;
-      },
-    });
+    this.gallery
+      .getImages(type)
+      .pipe(finalize(() => this.loader.displayLoader(false)))
+      .subscribe({
+        next: (images) => {
+          this.images = images;
+          this.errorView = false;
+        },
+        error: () => {
+          this.images = [];
+          this.errorView = true;
+        },
+      });
   }
 }
