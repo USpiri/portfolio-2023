@@ -29,7 +29,7 @@ export class ExperiencesComponent implements OnInit {
       jobTitle: ['', Validators.required],
       company: ['', Validators.required],
       description: ['', Validators.required],
-      link: ['', Validators.required],
+      link: [''],
     });
   }
   ngOnInit(): void {
@@ -71,7 +71,7 @@ export class ExperiencesComponent implements OnInit {
   }
 
   submit() {
-    if (this.showForm) {
+    if (this.showForm && this.experienceForm.valid) {
       const newExperience: Experience = {
         ...this.selectedExperience,
         ...this.experienceForm.value,
@@ -115,6 +115,10 @@ export class ExperiencesComponent implements OnInit {
           },
         });
       }
+    } else {
+      Object.values(this.experienceForm.controls).forEach((control) => {
+        control.markAsTouched();
+      });
     }
   }
 
