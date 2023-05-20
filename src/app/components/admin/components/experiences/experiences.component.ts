@@ -89,7 +89,6 @@ export class ExperiencesComponent implements OnInit {
               duration: 2000,
             }
           );
-          this.toggleUpload();
         },
         error: (err) => {
           this.snackBar.open(
@@ -101,7 +100,6 @@ export class ExperiencesComponent implements OnInit {
               duration: 2000,
             }
           );
-          this.toggleUpload();
         },
       });
     } else {
