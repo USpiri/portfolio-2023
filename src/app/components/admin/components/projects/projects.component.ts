@@ -6,6 +6,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from '@shared/service/user/project.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -37,8 +38,8 @@ export class ProjectsComponent implements OnInit {
       tags: [[], Validators.required],
       description: ['', Validators.required],
       longDescription: ['', Validators.required],
-      github: ['', Validators.required],
-      link: ['', Validators.required],
+      github: [''],
+      link: [''],
     });
   }
   ngOnInit(): void {
@@ -135,53 +136,46 @@ export class ProjectsComponent implements OnInit {
   }
 
   submit() {
-    if (this.showForm) {
-      const newProject: Project = {
-        ...this.selectedProject,
-        ...this.projectForm.value,
-      };
-      if (this.updateProject) {
-        this.projectService.updateProject(newProject, this.image).subscribe({
-          next: () => {
-            this.snackBar.open('Project updated successfully', undefined, {
-              duration: 2000,
-            });
-            this.toggleUpload();
-          },
-          error: (err) => {
-            console.log(err);
-            this.snackBar.open(
-              `Error updating project: ${err.error.error}`,
-              undefined,
-              {
-                duration: 2000,
-              }
-            );
-            this.toggleUpload();
-          },
-        });
-      } else {
-        this.projectService.createProject(newProject, this.image).subscribe({
-          next: () => {
-            this.snackBar.open('Project added successfully', undefined, {
-              duration: 2000,
-            });
-            this.toggleUpload();
-          },
-          error: (err) => {
-            console.log(err);
-            this.snackBar.open(
-              `Error adding project: ${err.error.error}`,
-              undefined,
-              {
-                duration: 2000,
-              }
-            );
-            this.toggleUpload();
-          },
-        });
-      }
+    const newProject: Project = {
+      ...this.selectedProject,
+      ...this.projectForm.value,
+    };
+    if (!this.showForm) {
+      return;
     }
+    if (!this.projectForm.valid) {
+      Object.values(this.projectForm.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+      this.loader.displayLoader(false);
+      return;
+    }
+    const observable = this.updateProject
+      ? this.projectService.updateProject(newProject, this.image)
+      : this.projectService.createProject(newProject, this.image);
+    observable.pipe(finalize(() => this.toggleUpload())).subscribe({
+      next: () => {
+        this.snackBar.open(
+          `Project ${this.updateProject ? 'updated' : 'added'} successfully`,
+          undefined,
+          {
+            duration: 2000,
+          }
+        );
+      },
+      error: (err) => {
+        console.log(err);
+        this.snackBar.open(
+          `Error ${this.updateProject ? 'updating' : 'adding'} project: ${
+            err.error.error
+          }`,
+          undefined,
+          {
+            duration: 2000,
+          }
+        );
+      },
+    });
   }
 
   restartProject(): Project {
