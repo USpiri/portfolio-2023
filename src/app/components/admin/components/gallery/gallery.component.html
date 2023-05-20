@@ -7,21 +7,25 @@
   </button>
 </div>
 <div *ngIf="!uploadImage">
-  <div *ngIf="images.length > 0; else noImages">
-    <div
-      class="d-flex gap-4 mb-3 categories w-100 justify-content-center unselectable"
+  <div
+    class="d-flex gap-4 mb-3 categories w-100 justify-content-center unselectable"
+  >
+    <p
+      [ngClass]="{ selected: selectedCategory === category }"
+      *ngFor="let category of categories"
+      (click)="selectCategory(category)"
     >
-      <p class="selected">All</p>
-      <p class="">Nature</p>
-      <p class="">Portraits</p>
-      <p class="">Cinematography</p>
-    </div>
+      {{ category }}
+    </p>
+  </div>
+  <div *ngIf="images.length > 0; else noImages">
     <div class="gallery h-100">
       <div class="mb-3 position-relative" *ngFor="let image of images">
         <img [src]="image.thumbnailUrl" width="100%" class="gallery-image" />
         <button
           mat-button
           class="option-button position-absolute top-0 end-0 m-2"
+          (click)="this.delete(image._id!)"
         >
           <mat-icon class="d-flex align-items-center m-0 p-0">delete</mat-icon>
         </button>
@@ -52,6 +56,7 @@
             class="me-2"
             *ngIf="imageSrc"
             (click)="submit()"
+            [disabled]="loading"
           >
             <div class="d-flex flex-row align-items-center gap-2">
               <div *ngIf="loading">

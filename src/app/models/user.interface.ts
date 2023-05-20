@@ -19,6 +19,7 @@ export interface SocialMedia {
 }
 
 export interface Image {
+  _id?: string;
   imageSrc: string;
   thumbnailUrl: string;
   type?: ImageType;

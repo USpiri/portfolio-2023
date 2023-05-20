@@ -24,7 +24,7 @@ export class GalleryService {
     return this.http.post<Image>(`${API}/${type}`, formData);
   }
 
-  deleteSkill(id: string) {
+  deleteImage(id: string) {
     return this.http.delete<void>(`${API}/${id}`, httpOptions);
   }
 }
