@@ -4,6 +4,7 @@ import { ImageDialogComponent } from './components';
 import { LoaderService } from '@shared/service/loader.service';
 import { GalleryService } from '@shared/service/gallery/gallery.service';
 import { Image } from '@models';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-gallery',
@@ -23,17 +24,18 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit(): void {
     this.loader.loading$.subscribe((state) => (this.loading = state));
-    this.gallery.getImages().subscribe({
-      next: (images) => {
-        this.images = images;
-        this.loader.displayLoader(false);
-        this.errorView = false;
-      },
-      error: () => {
-        this.loader.displayLoader(false);
-        this.errorView = true;
-      },
-    });
+    this.gallery
+      .getImages()
+      .pipe(finalize(() => this.loader.displayLoader(false)))
+      .subscribe({
+        next: (images) => {
+          this.images = images;
+          this.errorView = false;
+        },
+        error: () => {
+          this.errorView = true;
+        },
+      });
   }
   openImage(image: Image) {
     this.dialog.open(ImageDialogComponent, {
