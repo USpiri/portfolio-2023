@@ -20,53 +20,72 @@ export class ProjectsService {
   getProjects(): Observable<Project[]> {
     return this.http
       .get<Project[]>(`${API}`, httpOptions)
-      .pipe(tap((project) => this.projectsSubject.next(project)));
+      .pipe(tap((projects) => this.projectsSubject.next(projects)));
   }
 
-  createProject(project: Project): Observable<Project> {
+  createProject(project: Project, image?: File): Observable<Project> {
+    console.log(project);
+    console.log(image);
+
     return this.http.post<Project>(`${API}`, project, httpOptions).pipe(
       tap((project) => {
-        const currentProjects = this.projectsSubject.getValue();
-        const updatedProjects = [...currentProjects, project];
-        this.projectsSubject.next(updatedProjects);
+        if (image) {
+          try {
+            this.uploadImage(image, project._id ?? '').subscribe();
+          } catch (error) {
+            console.log(error);
+            throw new Error('ERROR');
+          }
+        } else {
+          const currentProjects = this.projectsSubject.getValue();
+          const updatedProjects = [...currentProjects, project];
+          this.projectsSubject.next(updatedProjects);
+        }
       })
     );
   }
 
-  updateProject(project: Project): Observable<Project> {
+  updateProject(project: Project, image?: File): Observable<Project> {
     return this.http
       .put<Project>(`${API}/${project._id}`, project, httpOptions)
       .pipe(
         tap((project) => {
-          const currentProjects = this.projectsSubject.getValue();
-          const updatedProjects = currentProjects.map((p) => {
-            if (p._id === project._id) {
-              return project;
+          if (image) {
+            try {
+              this.uploadImage(image, project._id ?? '').subscribe();
+            } catch (error) {
+              console.log(error);
+              throw new Error('ERROR');
             }
-            return p;
-          });
-          this.projectsSubject.next(updatedProjects);
+          } else {
+            const currentProjects = this.projectsSubject.getValue();
+            const updatedProjects = currentProjects.map((p) => {
+              if (p._id === project._id) {
+                return project;
+              }
+              return p;
+            });
+            this.projectsSubject.next(updatedProjects);
+          }
         })
       );
   }
 
-  uploadImage(image: File, id: string): Observable<Project> {
+  private uploadImage(image: File, id: string): Observable<Project> {
     const formData: FormData = new FormData();
     formData.append('project-image', image, image.name);
-    return this.http
-      .put<Project>(`${API}/image/${id}`, formData, httpOptions)
-      .pipe(
-        tap((project) => {
-          const currentProjects = this.projectsSubject.getValue();
-          const updatedProjects = currentProjects.map((p) => {
-            if (p._id === project._id) {
-              return project;
-            }
-            return p;
-          });
-          this.projectsSubject.next(updatedProjects);
-        })
-      );
+    return this.http.put<Project>(`${API}/image/${id}`, formData).pipe(
+      tap((project) => {
+        const currentProjects = this.projectsSubject.getValue();
+        const updatedProjects = currentProjects.map((p) => {
+          if (p._id === project._id) {
+            return project;
+          }
+          return p;
+        });
+        this.projectsSubject.next(updatedProjects);
+      })
+    );
   }
 
   deleteProject(id: string) {

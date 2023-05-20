@@ -43,7 +43,11 @@
         </th>
         <td mat-cell *matCellDef="let element" class="text-end">
           <div class="d-flex gap-2 justify-content-end">
-            <button mat-button class="option-button">
+            <button
+              mat-button
+              class="option-button"
+              (click)="deleteSkill(element._id)"
+            >
               <mat-icon class="m-0">delete</mat-icon>
             </button>
             <button
@@ -69,19 +73,41 @@
   <form [formGroup]="skillsForm" class="d-flex flex-column">
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input matInput placeholder="Tecnology" formControlName="name" />
+      <input matInput placeholder="Skill" formControlName="name" required />
+      <mat-error *ngIf="skillsForm.get('name')?.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Percentage</mat-label>
-      <input matInput placeholder="100%" formControlName="percentage" />
+      <input
+        matInput
+        placeholder="100%"
+        formControlName="percentage"
+        required
+      />
+      <mat-error *ngIf="skillsForm.get('percentage')?.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Icon</mat-label>
-      <input matInput placeholder="Icon" formControlName="icon" />
+      <input matInput placeholder="Icon" formControlName="icon" required />
+      <mat-error *ngIf="skillsForm.get('icon')?.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Icon family</mat-label>
-      <input matInput placeholder="Icon family" formControlName="iconFamily" />
+      <input
+        matInput
+        placeholder="Icon family"
+        formControlName="iconFamily"
+        required
+      />
+      <mat-error *ngIf="skillsForm.get('iconFamily')?.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
   </form>
 </div>

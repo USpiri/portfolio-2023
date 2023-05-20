@@ -16,8 +16,20 @@
         class="position-absolute bottom-0 start-0 tabs d-flex flex-column gap-2 m-3 ms-4 pe-4"
       >
         <button mat-button mat-dialog-close class="w-100">Cancel</button>
-        <button mat-button mat-flat-button color="primary" class="w-100">
-          Save<mat-icon>save</mat-icon>
+        <button
+          mat-button
+          mat-flat-button
+          color="primary"
+          class="w-100 d-flex align-items-center"
+          (click)="saveChange()"
+          *ngIf="selected !== 'Gallery'"
+        >
+          <div class="d-flex flex-row align-items-center gap-2">
+            <div *ngIf="loading">
+              <mat-spinner color="accent" diameter="20"></mat-spinner>
+            </div>
+            <mat-icon *ngIf="!loading">save</mat-icon>Save
+          </div>
         </button>
       </div>
     </div>
@@ -34,9 +46,3 @@
     </div>
   </div>
 </mat-dialog-content>
-<!-- <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button mat-flat-button color="primary">
-    Save<mat-icon>save</mat-icon>
-  </button>
-</mat-dialog-actions> -->

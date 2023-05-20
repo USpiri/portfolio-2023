@@ -24,17 +24,29 @@ export class UserService {
       .pipe(tap((user) => this.userSubject.next(user)));
   }
 
-  updateUser(user: User): Observable<User> {
+  updateUser(user: User, image?: File): Observable<User> {
     return this.http
       .put<User>(`${API}/${environment.USER_ID}`, user, httpOptions)
-      .pipe(tap((user) => this.userSubject.next(user)));
+      .pipe(
+        tap((user) => {
+          if (image) {
+            try {
+              this.uploadImage(image).subscribe();
+            } catch (error) {
+              throw new Error('ERROR');
+            }
+          } else {
+            this.userSubject.next(user);
+          }
+        })
+      );
   }
 
-  uploadImage(image: File): Observable<User> {
+  private uploadImage(image: File): Observable<User> {
     const formData: FormData = new FormData();
-    formData.append('profile-image', image, image.name);
+    formData.append('profile-image', image);
     return this.http
-      .put<User>(`${API}/image/${environment.USER_ID}`, formData, httpOptions)
+      .put<User>(`${API}/image/${environment.USER_ID}`, formData)
       .pipe(tap((user) => this.userSubject.next(user)));
   }
 }

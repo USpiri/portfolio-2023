@@ -12,7 +12,7 @@ const API = `${environment.API}/gallery`;
   providedIn: 'root',
 })
 export class GalleryService {
-  http: HttpClient = inject(HttpClient);
+  private http: HttpClient = inject(HttpClient);
 
   getImages(type = ''): Observable<Image[]> {
     return this.http.get<Image[]>(`${API}/${type}`, httpOptions);
@@ -21,7 +21,7 @@ export class GalleryService {
   uploadImage(image: File, type = ''): Observable<Image> {
     const formData: FormData = new FormData();
     formData.append('image', image, image.name);
-    return this.http.put<Image>(`${API}/${type}`, formData, httpOptions);
+    return this.http.post<Image>(`${API}/${type}`, formData);
   }
 
   deleteSkill(id: string) {
