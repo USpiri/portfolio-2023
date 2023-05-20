@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Skill } from '@models';
 import { SkillsService } from '@shared/service/user/skills.service';
 import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-skills',
@@ -71,55 +72,46 @@ export class SkillsComponent implements OnInit {
   }
 
   submit() {
-    if (this.showForm && this.skillsForm.valid) {
-      const newSkill: Skill = {
-        ...this.selectedSkill,
-        ...this.skillsForm.value,
-      };
-      if (this.update) {
-        this.skillService.updateSkill(newSkill).subscribe({
-          next: () => {
-            this.snackBar.open('Skill updated successfully', undefined, {
-              duration: 2000,
-            });
-            this.toggleUpload();
-          },
-          error: (err) => {
-            this.snackBar.open(
-              `Error updating skill: ${err.error.error}`,
-              undefined,
-              {
-                duration: 2000,
-              }
-            );
-            this.toggleUpload();
-          },
-        });
-      } else {
-        this.skillService.createSkill(newSkill).subscribe({
-          next: () => {
-            this.snackBar.open('Skill added successfully', undefined, {
-              duration: 2000,
-            });
-            this.toggleUpload();
-          },
-          error: (err) => {
-            this.snackBar.open(
-              `Error adding skill: ${err.error.error}`,
-              undefined,
-              {
-                duration: 2000,
-              }
-            );
-            this.toggleUpload();
-          },
-        });
-      }
-    } else {
+    const newSkill: Skill = {
+      ...this.selectedSkill,
+      ...this.skillsForm.value,
+    };
+    if (!this.showForm) {
+      return;
+    }
+    if (!this.skillsForm.valid) {
       Object.values(this.skillsForm.controls).forEach((control) => {
         control.markAsTouched();
       });
+      this.loader.displayLoader(false);
+      return;
     }
+    const observable = this.update
+      ? this.skillService.updateSkill(newSkill)
+      : this.skillService.createSkill(newSkill);
+    observable.pipe(finalize(() => this.toggleUpload())).subscribe({
+      next: () => {
+        this.snackBar.open(
+          `Skill ${this.update ? 'updated' : 'added'} successfully`,
+          undefined,
+          {
+            duration: 2000,
+          }
+        );
+      },
+      error: (err) => {
+        console.log(err);
+        this.snackBar.open(
+          `Error ${this.update ? 'updating' : 'adding'} skill: ${
+            err.error.error
+          }`,
+          undefined,
+          {
+            duration: 2000,
+          }
+        );
+      },
+    });
   }
 
   restartSkill(): Skill {
