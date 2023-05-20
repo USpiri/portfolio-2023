@@ -5,6 +5,7 @@ import { USER } from '@assets/data/user.mock';
 import { User } from '@models';
 import { UserService } from '@shared/service/user/user.service';
 import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -26,7 +27,6 @@ export class UserComponent implements OnInit {
 
   constructor() {
     this.userForm = this.fb.group({
-      _id: [''],
       name: ['', Validators.required],
       title: ['', Validators.required],
       description: [[], Validators.required],
@@ -65,23 +65,28 @@ export class UserComponent implements OnInit {
 
   submit() {
     const updatedUser: User = { ...this.user, ...this.userForm.value };
-    this.userService.updateUser(updatedUser, this.image).subscribe({
-      next: () => {
-        this.snackBar.open('User updated successfully', undefined, {
-          duration: 2000,
-        });
-        this.loader.displayLoader(false);
-      },
-      error: (err) => {
-        this.snackBar.open(
-          `Error updating user: ${err.error.error}`,
-          undefined,
-          {
+    if (!this.userForm.valid) {
+      this.loader.displayLoader(false);
+      return;
+    }
+    this.userService
+      .updateUser(updatedUser, this.image)
+      .pipe(finalize(() => this.loader.displayLoader(false)))
+      .subscribe({
+        next: () => {
+          this.snackBar.open('User updated successfully', undefined, {
             duration: 2000,
-          }
-        );
-        this.loader.displayLoader(false);
-      },
-    });
+          });
+        },
+        error: (err) => {
+          this.snackBar.open(
+            `Error updating user: ${err.error.error}`,
+            undefined,
+            {
+              duration: 2000,
+            }
+          );
+        },
+      });
   }
 }
