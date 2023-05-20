@@ -5,6 +5,7 @@ import { USER } from '@assets/data/user.mock';
 import { User } from '@models';
 import { UserService } from '@shared/service/user/user.service';
 import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-media',
@@ -35,24 +36,36 @@ export class MediaComponent implements OnInit {
     });
   }
   submit() {
+    if (!this.mediaForm.valid) {
+      Object.values(this.mediaForm.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+      this.loader.displayLoader(false);
+      return;
+    }
     const updatedUser: User = { ...this.user, media: this.mediaForm.value };
-    this.userService.updateUser(updatedUser).subscribe({
-      next: () => {
-        this.snackBar.open('User updated successfully', undefined, {
-          duration: 2000,
-        });
-        this.loader.displayLoader(false);
-      },
-      error: (err) => {
-        this.snackBar.open(
-          `Error updating user: ${err.error.error}`,
-          undefined,
-          {
+    this.userService
+      .updateUser(updatedUser)
+      .pipe(
+        finalize(() => {
+          this.loader.displayLoader(false);
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.snackBar.open('User updated successfully', undefined, {
             duration: 2000,
-          }
-        );
-        this.loader.displayLoader(false);
-      },
-    });
+          });
+        },
+        error: (err) => {
+          this.snackBar.open(
+            `Error updating user: ${err.error.error}`,
+            undefined,
+            {
+              duration: 2000,
+            }
+          );
+        },
+      });
   }
 }

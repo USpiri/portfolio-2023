@@ -3,19 +3,46 @@
   <form [formGroup]="mediaForm" class="d-flex flex-column">
     <mat-form-field appearance="outline">
       <mat-label>Twitter</mat-label>
-      <input matInput placeholder="Twitter" formControlName="twitter" />
+      <input
+        matInput
+        placeholder="Twitter"
+        formControlName="twitter"
+        required
+      />
+      <mat-error *ngIf="mediaForm.get('twitter')?.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Instagram</mat-label>
-      <input matInput placeholder="Instagram" formControlName="instagram" />
+      <input
+        matInput
+        placeholder="Instagram"
+        formControlName="instagram"
+        required
+      />
+      <mat-error *ngIf="mediaForm.get('instagram')?.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Github</mat-label>
-      <input matInput placeholder="Github" formControlName="github" />
+      <input matInput placeholder="Github" formControlName="github" required />
+      <mat-error *ngIf="mediaForm.get('github')?.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Linkedin</mat-label>
-      <input matInput placeholder="Linkedin" formControlName="linkedin" />
+      <input
+        matInput
+        placeholder="Linkedin"
+        formControlName="linkedin"
+        required
+      />
+      <mat-error *ngIf="mediaForm.get('linkedin')?.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
   </form>
 </div>
