@@ -3,12 +3,11 @@
   <button
     mat-button
     mat-dialog-close
-    class="logout me-3 d-flex justify-content-center align-items-center"
-    (click)="logout()"
-    matTooltip="Logout"
+    class="close me-3 d-flex justify-content-center align-items-center"
+    matTooltip="Close"
     matTooltipPosition="left"
   >
-    <mat-icon class="m-0">logout</mat-icon>
+    <mat-icon class="m-0">close</mat-icon>
   </button>
 </div>
 <mat-dialog-content class="py-0 pe-2">
@@ -27,7 +26,11 @@
       <div
         class="position-absolute bottom-0 start-0 tabs d-flex flex-column gap-2 m-3 ms-4 pe-4"
       >
-        <button mat-button mat-dialog-close class="w-100">Cancel</button>
+        <button mat-button mat-dialog-close class="w-100" (click)="logout()">
+          <div class="d-flex flex-row align-items-center gap-2">
+            <mat-icon>logout</mat-icon>Logout
+          </div>
+        </button>
         <button
           mat-button
           mat-flat-button
