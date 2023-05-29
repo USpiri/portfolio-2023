@@ -37,3 +37,23 @@
 <div *ngIf="!loading && errorView">
   <app-server-error></app-server-error>
 </div>
+<div
+  class="controller me-3 mb-3 d-flex flex-column"
+  *ngIf="!loading && !errorView"
+>
+  <button
+    mat-button
+    mat-flat-button
+    color="warn"
+    class="rotate-button"
+    (click)="openSettings()"
+    matTooltip="Admin pannel"
+    matTooltipPosition="left"
+    *ngIf="isLoggedIn"
+  >
+    <mat-icon
+      class="m-0 admin-icon d-flex align-items-center justify-content-center"
+      >settings</mat-icon
+    >
+  </button>
+</div>

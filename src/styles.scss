@@ -22,3 +22,29 @@ p {
   width: 36px !important;
   min-width: unset !important;
 }
+
+.controller {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 15;
+}
+.controller-button {
+  min-width: unset !important;
+}
+
+.admin-icon {
+  font-size: 1rem;
+}
+.rotate-button:hover .admin-icon {
+  animation: rotate 1s forwards;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
