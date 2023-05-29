@@ -24,23 +24,19 @@ export class ProjectsService {
   }
 
   createProject(project: Project, image?: File): Observable<Project> {
-    console.log(project);
-    console.log(image);
-
     return this.http.post<Project>(`${API}`, project, httpOptions).pipe(
       tap((project) => {
         if (image) {
           try {
             this.uploadImage(image, project._id ?? '').subscribe();
           } catch (error) {
-            console.log(error);
+            console.error(error);
             throw new Error('ERROR');
           }
-        } else {
-          const currentProjects = this.projectsSubject.getValue();
-          const updatedProjects = [...currentProjects, project];
-          this.projectsSubject.next(updatedProjects);
         }
+        const currentProjects = this.projectsSubject.getValue();
+        const updatedProjects = [...currentProjects, project];
+        this.projectsSubject.next(updatedProjects);
       })
     );
   }
@@ -57,16 +53,15 @@ export class ProjectsService {
               console.log(error);
               throw new Error('ERROR');
             }
-          } else {
-            const currentProjects = this.projectsSubject.getValue();
-            const updatedProjects = currentProjects.map((p) => {
-              if (p._id === project._id) {
-                return project;
-              }
-              return p;
-            });
-            this.projectsSubject.next(updatedProjects);
           }
+          const currentProjects = this.projectsSubject.getValue();
+          const updatedProjects = currentProjects.map((p) => {
+            if (p._id === project._id) {
+              return project;
+            }
+            return p;
+          });
+          this.projectsSubject.next(updatedProjects);
         })
       );
   }
