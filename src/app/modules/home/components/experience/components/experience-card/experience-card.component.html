@@ -7,7 +7,13 @@
         }}</span>
         <h3>{{ experience.jobTitle }}</h3>
       </div>
-      <button mat-button>Web<mat-icon>language</mat-icon></button>
+      <a
+        *ngIf="experience.link"
+        mat-button
+        [href]="experience.link"
+        target="_blank"
+        >Web<mat-icon>language</mat-icon></a
+      >
     </div>
     <p class="experience-description">
       {{ experience.description }}
