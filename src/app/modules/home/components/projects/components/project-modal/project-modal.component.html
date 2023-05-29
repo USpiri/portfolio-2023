@@ -1,4 +1,4 @@
-<div mat-dialog-content class="p-3 d-flex flex-column gap-3">
+<div mat-dialog-content class="p-3 d-flex flex-column gap-3 project-card">
   <div class="project-content">
     <div class="d-flex gap-2 mb-2">
       <span
@@ -23,14 +23,21 @@
       Close<mat-icon>close</mat-icon>
     </button>
     <div class="d-flex flex-row justify-content-end">
-      <button mat-button>
+      <a
+        mat-button
+        [href]="project.github"
+        target="_blank"
+        *ngIf="project.github"
+      >
         Github<mat-icon
           fontSet="fa-brands"
           fontIcon="fa-github"
           class="d-flex"
         ></mat-icon>
-      </button>
-      <button mat-button>Web<mat-icon>language</mat-icon></button>
+      </a>
+      <a mat-button [href]="project.link" target="_blank" *ngIf="project.link"
+        >Web<mat-icon>language</mat-icon></a
+      >
     </div>
   </div>
 </div>
