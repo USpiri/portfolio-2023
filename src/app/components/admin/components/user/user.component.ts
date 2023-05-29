@@ -39,7 +39,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.userService.user$.subscribe((user) => (this.user = user));
     this.userForm.patchValue(this.user);
-    this.imageSrc = this.user.image?.imageSrc ?? '';
+    this.imageSrc = this.user.image?.src ?? '';
     const description = this.userForm.get('description')?.value.join('\n');
     this.userForm.get('description')?.setValue(description);
   }
@@ -60,7 +60,7 @@ export class UserComponent implements OnInit {
 
   clear() {
     this.fileName = '';
-    this.imageSrc = this.user.image?.imageSrc ?? '';
+    this.imageSrc = this.user.image?.src ?? '';
   }
 
   submit() {

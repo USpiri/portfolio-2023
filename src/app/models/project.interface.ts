@@ -1,4 +1,4 @@
-import { Image } from './user.interface';
+import { Image } from '@models';
 
 export interface Project {
   _id?: string;
@@ -6,7 +6,7 @@ export interface Project {
   tags: string[];
   description: string;
   longDescription: string;
-  github: string;
-  link: string;
+  github?: string;
+  link?: string;
   image?: Image;
 }

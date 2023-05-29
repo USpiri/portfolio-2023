@@ -19,7 +19,7 @@
       <div class="gallery">
         <div class="col mb-3" *ngFor="let image of images">
           <app-image
-            [src]="image.thumbnailUrl"
+            [src]="image.thumbnail ?? ''"
             width="250px"
             (imageClick)="openImage(image)"
           ></app-image>

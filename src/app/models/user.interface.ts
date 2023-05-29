@@ -1,3 +1,5 @@
+import { Image } from '@models';
+
 export interface User {
   _id?: string;
   name: string;
@@ -17,12 +19,3 @@ export interface SocialMedia {
   linkedin: string;
   instagram: string;
 }
-
-export interface Image {
-  _id?: string;
-  imageSrc: string;
-  thumbnailUrl: string;
-  type?: ImageType;
-}
-
-export type ImageType = 'NATURE' | 'PORTRAIT';
