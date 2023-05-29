@@ -32,8 +32,12 @@ export class GalleryComponent implements OnInit {
           this.images = images;
           this.errorView = false;
         },
-        error: () => {
-          this.errorView = true;
+        error: (err) => {
+          if (err.error.error === 'ERROR_NO_IMAGES') {
+            this.errorView = false;
+          } else {
+            this.errorView = true;
+          }
         },
       });
   }
