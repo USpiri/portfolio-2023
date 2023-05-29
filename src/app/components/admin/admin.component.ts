@@ -12,6 +12,7 @@ import {
 } from './components';
 import { MediaComponent } from './components/media/media.component';
 import { ButtonLoaderService } from './shared/button-loader.service';
+import { AuthService } from '@shared/service/auth/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -41,6 +42,7 @@ export class AdminComponent implements OnInit {
   experienceService = inject(ExperiencesService);
   skillService = inject(SkillsService);
   loader = inject(ButtonLoaderService);
+  auth = inject(AuthService);
 
   ngOnInit(): void {
     forkJoin([
@@ -82,5 +84,9 @@ export class AdminComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

@@ -2,7 +2,6 @@ import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login';
-import { AdminComponent } from '../admin/admin.component';
 import { AuthService } from '@shared/service/auth/auth.service';
 
 export interface NavItems {
@@ -53,12 +52,5 @@ export class NavbarComponent implements OnInit {
 
   login() {
     this.dialog.open(LoginComponent);
-  }
-
-  openSettings() {
-    this.dialog.open(AdminComponent, {
-      autoFocus: false,
-      minWidth: '55vw',
-    });
   }
 }

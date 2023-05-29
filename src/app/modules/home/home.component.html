@@ -31,12 +31,27 @@
   <button
     mat-raised-button
     #topButton
-    class="controller-button"
+    class="controller-button mb-2"
     (click)="scrollToTop()"
     *ngIf="scrollPosition > windowHeight / 2"
     matTooltip="To top"
     matTooltipPosition="left"
   >
     <mat-icon class="m-0">arrow_upward</mat-icon>
+  </button>
+  <button
+    mat-button
+    mat-flat-button
+    color="warn"
+    class="rotate-button"
+    (click)="openSettings()"
+    matTooltip="Admin pannel"
+    matTooltipPosition="left"
+    *ngIf="isLoggedIn"
+  >
+    <mat-icon
+      class="m-0 admin-icon d-flex align-items-center justify-content-center"
+      >settings</mat-icon
+    >
   </button>
 </div>

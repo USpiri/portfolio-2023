@@ -5,6 +5,9 @@ import { ExperiencesService } from '../../shared/service/user/experiences.servic
 import { SkillsService } from '../../shared/service/user/skills.service';
 import { forkJoin } from 'rxjs';
 import { LoaderService } from '@shared/service/loader.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminComponent } from 'src/app/components/admin/admin.component';
+import { AuthService } from '@shared/service/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +20,15 @@ export class HomeComponent implements OnInit {
   documentHeight = 0;
   loading = true;
   errorView = false;
+  isLoggedIn = false;
 
   userService = inject(UserService);
   projectsService = inject(ProjectsService);
   experienceService = inject(ExperiencesService);
   skillService = inject(SkillsService);
   loader = inject(LoaderService);
+  dialog = inject(MatDialog);
+  auth = inject(AuthService);
 
   ngOnInit(): void {
     window.addEventListener('scroll', this.onWindowScroll.bind(this));
@@ -46,6 +52,7 @@ export class HomeComponent implements OnInit {
         this.errorView = true;
       },
     });
+    this.auth.isLoggedIn$.subscribe((state) => (this.isLoggedIn = state));
   }
 
   onWindowScroll() {
@@ -65,5 +72,12 @@ export class HomeComponent implements OnInit {
 
   scrollToTop() {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+  }
+
+  openSettings() {
+    this.dialog.open(AdminComponent, {
+      autoFocus: false,
+      minWidth: '55vw',
+    });
   }
 }

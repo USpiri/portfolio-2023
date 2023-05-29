@@ -19,18 +19,3 @@
 .icon mat-icon {
   font-weight: 200 !important;
 }
-.admin-icon {
-  font-size: 1rem;
-}
-.rotate-button:hover .admin-icon {
-  animation: rotate 1s forwards;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
