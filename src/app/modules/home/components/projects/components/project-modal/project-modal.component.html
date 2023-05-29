@@ -16,6 +16,7 @@
     [src]="project.image?.src"
     alt="Project {{ project.title }} image"
     class="project-content"
+    *ngIf="project.image?.src"
   />
   <div class="d-flex flex-row justify-content-between">
     <button mat-button (click)="close()">
