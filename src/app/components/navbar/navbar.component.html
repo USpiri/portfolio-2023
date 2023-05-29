@@ -15,6 +15,7 @@
         (mouseout)="icon = 'lock'"
         (mouseover)="icon = 'lock_open'"
         (click)="login()"
+        *ngIf="!isLoggedIn"
       >
         <mat-icon fontSet="material-icons-outlined" class="mt-1">{{
           icon
