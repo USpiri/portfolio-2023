@@ -7,13 +7,13 @@
     </p>
   </div>
   <div class="d-flex flex-row">
-    <button mat-button>
+    <a mat-button *ngIf="project.github" [href]="project.github">
       Github<mat-icon
         fontSet="fa-brands"
         fontIcon="fa-github"
         class="d-flex"
       ></mat-icon>
-    </button>
+    </a>
     <button mat-button (click)="openDialog()">
       More<mat-icon>info_outlined</mat-icon>
     </button>
