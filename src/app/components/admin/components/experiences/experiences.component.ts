@@ -43,6 +43,7 @@ export class ExperiencesComponent implements OnInit {
     this.showForm = true;
     this.experienceForm.patchValue(experience);
     this.selectedExperience = experience;
+    this.update = true;
   }
 
   toggleUpload() {
@@ -50,6 +51,7 @@ export class ExperiencesComponent implements OnInit {
     this.experienceForm.reset();
     this.selectedExperience = this.restartExperience();
     this.loader.displayLoader(false);
+    this.update = false;
   }
 
   deleteExperience(id: string) {
@@ -72,6 +74,8 @@ export class ExperiencesComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.update);
+
     if (this.showForm && this.experienceForm.valid) {
       const newExperience: Experience = {
         ...this.selectedExperience,
