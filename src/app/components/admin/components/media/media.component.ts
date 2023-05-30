@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { USER } from '@assets/data/user.mock';
 import { User } from '@models';
 import { UserService } from '@shared/service/user/user.service';
-import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { AdminLoaderService } from '../../shared/admin-loader.service';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -19,7 +19,7 @@ export class MediaComponent implements OnInit {
   private fb = inject(FormBuilder);
   private userService = inject(UserService);
   private snackBar: MatSnackBar = inject(MatSnackBar);
-  private loader = inject(ButtonLoaderService);
+  private loader = inject(AdminLoaderService);
 
   constructor() {
     this.mediaForm = this.fb.group({

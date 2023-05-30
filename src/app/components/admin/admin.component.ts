@@ -3,7 +3,7 @@ import { ExperiencesService } from '@shared/service/user/experiences.service';
 import { ProjectsService } from '@shared/service/user/project.service';
 import { SkillsService } from '@shared/service/user/skills.service';
 import { UserService } from '@shared/service/user/user.service';
-import { forkJoin } from 'rxjs';
+import { finalize, forkJoin } from 'rxjs';
 import {
   ExperiencesComponent,
   ProjectsComponent,
@@ -11,7 +11,7 @@ import {
   UserComponent,
 } from './components';
 import { MediaComponent } from './components/media/media.component';
-import { ButtonLoaderService } from './shared/button-loader.service';
+import { AdminLoaderService } from './shared/admin-loader.service';
 import { AuthService } from '@shared/service/auth/auth.service';
 
 @Component({
@@ -30,6 +30,7 @@ export class AdminComponent implements OnInit {
   ];
   selected = 'User';
   loading = false;
+  loadingData = true;
 
   @ViewChild(UserComponent) user!: UserComponent;
   @ViewChild(SkillsComponent) skill!: SkillsComponent;
@@ -41,8 +42,13 @@ export class AdminComponent implements OnInit {
   projectsService = inject(ProjectsService);
   experienceService = inject(ExperiencesService);
   skillService = inject(SkillsService);
-  loader = inject(ButtonLoaderService);
+  loader = inject(AdminLoaderService);
   auth = inject(AuthService);
+
+  constructor() {
+    this.loader.loading$.subscribe((state) => (this.loading = state));
+    this.loader.loadingData$.subscribe((state) => (this.loadingData = state));
+  }
 
   ngOnInit(): void {
     forkJoin([
@@ -50,8 +56,9 @@ export class AdminComponent implements OnInit {
       this.projectsService.getProjects(),
       this.experienceService.getExperiences(),
       this.skillService.getSkills(),
-    ]).subscribe();
-    this.loader.loading$.subscribe((state) => (this.loading = state));
+    ])
+      .pipe(finalize(() => this.loader.displayDataLoader(false)))
+      .subscribe();
   }
 
   selectMenu(option: string) {

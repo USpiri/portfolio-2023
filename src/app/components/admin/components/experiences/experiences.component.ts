@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Experience } from '@models';
 import { ExperiencesService } from '@shared/service/user/experiences.service';
-import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { AdminLoaderService } from '../../shared/admin-loader.service';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -23,7 +23,7 @@ export class ExperiencesComponent implements OnInit {
   private fb = inject(FormBuilder);
   private experienceService = inject(ExperiencesService);
   private snackBar: MatSnackBar = inject(MatSnackBar);
-  private loader = inject(ButtonLoaderService);
+  private loader = inject(AdminLoaderService);
 
   constructor() {
     this.experienceForm = this.fb.group({

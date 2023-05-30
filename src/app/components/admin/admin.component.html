@@ -50,7 +50,7 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="p-3 px-4 w-100">
-      <container-element [ngSwitch]="selected">
+      <container-element [ngSwitch]="selected" *ngIf="!loadingData">
         <app-user *ngSwitchCase="'User'"></app-user>
         <app-projects *ngSwitchCase="'Projects'"></app-projects>
         <app-experiences *ngSwitchCase="'Experiences'"></app-experiences>
@@ -58,6 +58,9 @@
         <app-gallery *ngSwitchCase="'Gallery'"></app-gallery>
         <app-media *ngSwitchCase="'Social Media'"></app-media>
       </container-element>
+      <div class="w-100" *ngIf="loadingData">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
     </div>
   </div>
 </mat-dialog-content>

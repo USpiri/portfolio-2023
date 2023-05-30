@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Skill } from '@models';
 import { SkillsService } from '@shared/service/user/skills.service';
-import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { AdminLoaderService } from '../../shared/admin-loader.service';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -23,7 +23,7 @@ export class SkillsComponent implements OnInit {
   private fb = inject(FormBuilder);
   private skillService = inject(SkillsService);
   private snackBar: MatSnackBar = inject(MatSnackBar);
-  private loader = inject(ButtonLoaderService);
+  private loader = inject(AdminLoaderService);
 
   constructor() {
     this.skillsForm = this.fb.group({

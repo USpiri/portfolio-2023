@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { USER } from '@assets/data/user.mock';
 import { User } from '@models';
 import { UserService } from '@shared/service/user/user.service';
-import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { AdminLoaderService } from '../../shared/admin-loader.service';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
   private fb = inject(FormBuilder);
   private userService = inject(UserService);
   private snackBar: MatSnackBar = inject(MatSnackBar);
-  private loader = inject(ButtonLoaderService);
+  private loader = inject(AdminLoaderService);
 
   constructor() {
     this.userForm = this.fb.group({
@@ -35,11 +35,13 @@ export class UserComponent implements OnInit {
       email: ['', Validators.required],
       location: ['', Validators.required],
     });
+    this.userService.user$.subscribe((user) => {
+      this.user = user;
+      this.userForm.patchValue(this.user);
+      this.imageSrc = user.image?.src ?? '';
+    });
   }
   ngOnInit(): void {
-    this.userService.user$.subscribe((user) => (this.user = user));
-    this.userForm.patchValue(this.user);
-    this.imageSrc = this.user.image?.src ?? '';
     const description = this.userForm.get('description')?.value.join('\n');
     this.userForm.get('description')?.setValue(description);
   }

@@ -5,7 +5,7 @@ import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from '@shared/service/user/project.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ButtonLoaderService } from '../../shared/button-loader.service';
+import { AdminLoaderService } from '../../shared/admin-loader.service';
 import { finalize } from 'rxjs';
 
 @Component({
@@ -30,7 +30,7 @@ export class ProjectsComponent implements OnInit {
   private fb = inject(FormBuilder);
   private projectService = inject(ProjectsService);
   private snackBar: MatSnackBar = inject(MatSnackBar);
-  private loader = inject(ButtonLoaderService);
+  private loader = inject(AdminLoaderService);
 
   constructor() {
     this.projectForm = this.fb.group({
