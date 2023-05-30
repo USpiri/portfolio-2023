@@ -74,8 +74,6 @@ export class ExperiencesComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.update);
-
     if (this.showForm && this.experienceForm.valid) {
       const newExperience: Experience = {
         ...this.selectedExperience,
