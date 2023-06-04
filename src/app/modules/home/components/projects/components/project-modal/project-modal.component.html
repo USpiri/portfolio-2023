@@ -13,10 +13,10 @@
     </p>
   </div>
   <img
-    [src]="project.image?.src"
+    [src]="project.image"
     alt="Project {{ project.title }} image"
     class="project-content"
-    *ngIf="project.image?.src"
+    *ngIf="project.image"
   />
   <div class="d-flex flex-row justify-content-between">
     <button mat-button (click)="close()">

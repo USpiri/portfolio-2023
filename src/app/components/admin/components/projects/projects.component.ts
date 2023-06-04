@@ -50,7 +50,7 @@ export class ProjectsComponent implements OnInit {
 
   selectProject(project: Project) {
     this.projectForm.patchValue(project);
-    this.imageSrc = project.image?.src ?? '';
+    this.imageSrc = project.image ?? '';
     this.selectedProject = project;
     this.showForm = true;
     this.updateProject = true;
@@ -113,7 +113,7 @@ export class ProjectsComponent implements OnInit {
 
   clear() {
     this.fileName = '';
-    this.imageSrc = this.selectedProject.image?.src ?? '';
+    this.imageSrc = this.selectedProject.image ?? '';
   }
 
   deleteProject(id: string) {

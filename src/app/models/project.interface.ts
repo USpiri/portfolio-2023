@@ -1,5 +1,3 @@
-import { Image } from '@models';
-
 export interface Project {
   _id?: string;
   title: string;
@@ -8,5 +6,5 @@ export interface Project {
   longDescription: string;
   github?: string;
   link?: string;
-  image?: Image;
+  image?: string;
 }
