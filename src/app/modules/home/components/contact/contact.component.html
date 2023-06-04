@@ -44,35 +44,80 @@
     </div>
     <mat-card>
       <mat-card-content>
-        <form class="d-flex flex-column contact-form">
+        <form
+          [formGroup]="emailForm"
+          class="d-flex flex-column contact-form"
+          (ngSubmit)="sendMail()"
+        >
           <mat-form-field>
             <mat-label>Name</mat-label>
-            <input matInput placeholder="Ex. Jhon Doe" />
+            <input
+              matInput
+              placeholder="Ex. Jhon Doe"
+              formControlName="name"
+              required
+              [disabled]="loading"
+            />
+            <mat-error *ngIf="emailForm.get('name')?.invalid">
+              This field is required
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Ex. jhondoe@email.com" />
+            <input
+              matInput
+              placeholder="Ex. jhondoe@email.com"
+              formControlName="email"
+              required
+              [disabled]="loading"
+            />
+            <mat-error *ngIf="emailForm.get('email')?.invalid">
+              This field is required
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Subject</mat-label>
-            <input matInput placeholder="Ex. Hello!" />
+            <input
+              matInput
+              placeholder="Ex. Hello!"
+              formControlName="subject"
+              required
+              [disabled]="loading"
+            />
+            <mat-error *ngIf="emailForm.get('subject')?.invalid">
+              This field is required
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Message</mat-label>
-            <textarea matInput class="message-area"></textarea>
+            <textarea
+              matInput
+              class="message-area"
+              formControlName="message"
+              required
+              [disabled]="true"
+            ></textarea>
+            <mat-error *ngIf="emailForm.get('message')?.invalid">
+              This field is required
+            </mat-error>
           </mat-form-field>
 
           <button
             mat-flat-button
-            type="button"
+            type="submit"
             color="accent"
-            (click)="sendMail()"
+            [disabled]="loading"
           >
             Send
           </button>
         </form>
       </mat-card-content>
+      <mat-progress-bar
+        mode="indeterminate"
+        class="loading-bar mt-3"
+        *ngIf="loading"
+      ></mat-progress-bar>
     </mat-card>
   </div>
 </div>

@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   exports: [
@@ -18,6 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatSnackBarModule,
     MatTooltipModule,
+    MatProgressBarModule,
   ],
 })
 export class MaterialModule {}

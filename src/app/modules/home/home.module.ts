@@ -20,6 +20,7 @@ import { ProjectModalComponent } from './components/projects/components/project-
 import { ExperienceCardComponent } from './components/experience/components/experience-card/experience-card.component';
 import { BlogCardComponent } from './components/blog/components/blog-card/blog-card.component';
 import { ComponentsModule } from '@shared/components/components.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,13 @@ import { ComponentsModule } from '@shared/components/components.module';
     ExperienceCardComponent,
     BlogCardComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, MaterialModule, ComponentsModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    MaterialModule,
+    ComponentsModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class HomeModule {}
