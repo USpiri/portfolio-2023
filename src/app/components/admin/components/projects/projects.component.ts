@@ -114,6 +114,7 @@ export class ProjectsComponent implements OnInit {
   clear() {
     this.fileName = '';
     this.imageSrc = this.selectedProject.image ?? '';
+    this.image = undefined;
   }
 
   deleteProject(id: string) {
