@@ -7,12 +7,12 @@
     <div class="d-md-flex px-3">
       <div
         class="d-flex d-md-block align-items-center justify-content-center"
-        *ngIf="user.image?.src"
+        *ngIf="user.image"
       >
         <mat-card>
           <mat-card-content>
             <img
-              [src]="user.image?.src"
+              [src]="user.image"
               class="about-image"
               alt="{{ user.name }}"
               title="Profile image"

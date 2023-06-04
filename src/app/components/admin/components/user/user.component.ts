@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
     this.userService.user$.subscribe((user) => {
       this.user = user;
       this.userForm.patchValue(this.user);
-      this.imageSrc = user.image?.src ?? '';
+      this.imageSrc = user.image ?? '';
     });
   }
   ngOnInit(): void {
@@ -62,7 +62,7 @@ export class UserComponent implements OnInit {
 
   clear() {
     this.fileName = '';
-    this.imageSrc = this.user.image?.src ?? '';
+    this.imageSrc = this.user.image ?? '';
   }
 
   submit() {

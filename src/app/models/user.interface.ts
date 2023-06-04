@@ -1,5 +1,3 @@
-import { Image } from '@models';
-
 export interface User {
   _id?: string;
   name: string;
@@ -9,7 +7,7 @@ export interface User {
   phone: string;
   email: string;
   location: string;
-  image?: Image;
+  image?: string;
   media: SocialMedia;
 }
 
