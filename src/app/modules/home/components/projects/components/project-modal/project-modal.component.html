@@ -8,8 +8,8 @@
       >
     </div>
     <h3 class="text-break mb-3">{{ project.title }}</h3>
-    <p class="project-description">
-      {{ project.longDescription }}
+    <p class="project-description mb-1" *ngFor="let paragraph of paragraphs">
+      {{ paragraph }}
     </p>
   </div>
   <img

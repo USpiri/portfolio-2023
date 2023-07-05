@@ -8,10 +8,13 @@ import { Project } from '@models';
   styleUrls: ['./project-modal.component.scss'],
 })
 export class ProjectModalComponent {
+  paragraphs: string[] = [];
   constructor(
     @Inject(MAT_DIALOG_DATA) public project: Project,
     private dialogRef: MatDialogRef<ProjectModalComponent>
-  ) {}
+  ) {
+    this.paragraphs = this.project.longDescription.split('\n');
+  }
   close() {
     this.dialogRef.close();
   }
